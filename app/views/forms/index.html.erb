@@ -1,0 +1,20 @@
+forms#index
+
+
+<%= form_with url: "/search", class: "grid grid-cols-3 gap-2 w-full max-w-screen-sm", method: :get do |form| %>
+  <% card_content = content_tag(:span, "Small", class: "text-xs font-semibold uppercase") +
+    content_tag(:span, "$10/mo", class: "text-xl font-bold mt-2") +
+    content_tag(:ul, class: "text-sm mt-2") do
+      content_tag(:li, "Thing 1") +
+      content_tag(:li, "Thing 2")
+    end
+  %>
+
+    <div>
+      <%= form.radio_button :country, 'Colombia', class: "hidden" %>
+      <%= form.label(:country_colombia,
+        card_content,
+        class: "flex flex-col p-4 border-2 border-gray-400 cursor-pointer"
+      ) %>
+		</div>
+<% end %>
