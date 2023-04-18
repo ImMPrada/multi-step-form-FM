@@ -2,21 +2,58 @@ forms#index
 
 
 <%= form_with url: '/search', class: 'grid grid-cols-3 gap-2 w-full max-w-screen-sm', method: :get do |form| %>
-  <% card_content = image_tag('advanced_plan_icon.png', size: '40x40', alt: 'Edit Entry') +
-    content_tag(
-      :div,
-      content_tag(:span, 'Arcade', class: 'text-base font-bold') +
-      content_tag(:span, '$90/yr', class: 'text-sm mt-2') +
-      content_tag(:span, '2 months free', class: 'text-xs mt-1.5'),
-      class: 'flex flex-col'
-    )
-  %>
-
-    <div>
-      <%= form.radio_button :country, 'Colombia', class: 'hidden' %>
-      <%= form.label(:country_colombia,
-        card_content,
-        class: 'flex sm:flex-col flex-row justify-between sm:w-36 sm:h-44 p-2.5 rounded-lg border border-gray-400 cursor-pointer'
-      ) %>
-		</div>
+  <%= render(
+    partial: 'partials/form/radio_card',
+    locals: {
+      form:,
+      icon: {
+        url: 'arcade_plan_icon.png',
+        size: '40x40',
+        alt: 'arcade plan icon'
+      },
+      name: 'plan',
+      value: 'arcade',
+      plan: {
+        name: 'Arcade',
+        price: '$90/yr',
+        note: '2 months free'
+      }
+    }
+  )%>
+  <%= render(
+    partial: 'partials/form/radio_card',
+    locals: {
+      form:,
+      icon: {
+        url: 'pro_plan_icon.png',
+        size: '40x40',
+        alt: 'pro plan icon'
+      },
+      name: 'plan',
+      value: 'pro',
+      plan: {
+        name: 'Pro',
+        price: '$120/yr',
+        note: '2 months free'
+      }
+    }
+  )%>
+  <%= render(
+    partial: 'partials/form/radio_card',
+    locals: {
+      form:,
+      icon: {
+        url: 'advanced_plan_icon.png',
+        size: '40x40',
+        alt: 'advanced plan icon'
+      },
+      name: 'plan',
+      value: 'advanced',
+      plan: {
+        name: 'Advanced',
+        price: '$200/yr',
+        note: '2 months free'
+      }
+    }
+  )%>
 <% end %>
