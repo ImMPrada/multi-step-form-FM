@@ -1,6 +1,6 @@
-<%= form_with url: '/search', class: 'w-full max-w-screen-sm', method: :get do |form| %>
+<%= form_with url: '/search', class: 'w-full max-w-screen-sm flex flex-col', method: :get do |form| %>
   <% plan_options = render(
-    partial: 'partials/form/radio_card',
+    partial: 'partials/form_components/radio_card',
     locals: {
       form:,
       icon: {
@@ -18,7 +18,7 @@
     }
   ) +
   render(
-    partial: 'partials/form/radio_card',
+    partial: 'partials/form_components/radio_card',
     locals: {
       form:,
       icon: {
@@ -36,7 +36,7 @@
     }
   ) +
   render(
-    partial: 'partials/form/radio_card',
+    partial: 'partials/form_components/radio_card',
     locals: {
       form:,
       icon: {
@@ -55,7 +55,7 @@
   )%>
 
   <% frequence = render(
-    partial: 'partials/form/toggle_button',
+    partial: 'partials/form_components/toggle_button',
     locals: {
       form:,
       name: 'frequence',
@@ -69,7 +69,7 @@
   <%= content_tag(
     :div,
     plan_options,
-    class: 'grid grid-cols-1 sm:grid-cols-3 gap-2'
+    class: 'flex justify-around'
   )%>
 
   <%= content_tag(
