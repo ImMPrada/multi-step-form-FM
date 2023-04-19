@@ -1,5 +1,5 @@
-<%= form_with url: '/search', class: 'grid grid-cols-1 sm:grid-cols-3 gap-2 w-full max-w-screen-sm', method: :get do |form| %>
-  <%= render(
+<%= form_with url: '/search', class: 'w-full max-w-screen-sm', method: :get do |form| %>
+  <% plan_options = render(
     partial: 'partials/form/radio_card',
     locals: {
       form:,
@@ -16,8 +16,8 @@
         note: '2 months free'
       }
     }
-  )%>
-  <%= render(
+  ) +
+  render(
     partial: 'partials/form/radio_card',
     locals: {
       form:,
@@ -34,8 +34,8 @@
         note: '2 months free'
       }
     }
-  )%>
-  <%= render(
+  ) +
+  render(
     partial: 'partials/form/radio_card',
     locals: {
       form:,
@@ -52,5 +52,29 @@
         note: '2 months free'
       }
     }
+  )%>
+
+  <% frequence = render(
+    partial: 'partials/form/toggle_button',
+    locals: {
+      form:,
+      name: 'frequence',
+      value: {
+        left: 'Monthly',
+        right: 'Yearly'
+      }
+    }
+  )%>
+
+  <%= content_tag(
+    :div,
+    plan_options,
+    class: 'grid grid-cols-1 sm:grid-cols-3 gap-2'
+  )%>
+
+  <%= content_tag(
+    :div,
+    frequence,
+    class: 'grid grid-cols-1 min-w-full bg-dark-white rounded-lg p-5 mt-5 '
   )%>
 <% end %>
