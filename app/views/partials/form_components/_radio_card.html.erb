@@ -28,7 +28,7 @@
   <%= form.radio_button(
     "#{name}".downcase.to_sym,
     "#{value}".downcase.to_sym,
-    class: 'hidden'
+    class: 'hidden hidden-radio-for-card'
   )%>
   <%= form.label(
     "#{name.downcase}_#{value.downcase}".to_sym,
@@ -40,7 +40,8 @@
       sm:w-36 w-full
       sm:h-44
       p-5
-      border border-soft-gray
+      border
+      border-soft-gray
       rounded-lg
       cursor-pointer
       hover:border-purple'
