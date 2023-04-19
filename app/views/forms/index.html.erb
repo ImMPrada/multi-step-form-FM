@@ -1,7 +1,4 @@
-forms#index
-
-
-<%= form_with url: '/search', class: 'grid grid-cols-3 gap-2 w-full max-w-screen-sm', method: :get do |form| %>
+<%= form_with url: '/search', class: 'grid grid-cols-1 sm:grid-cols-3 gap-2 w-full max-w-screen-sm', method: :get do |form| %>
   <%= render(
     partial: 'partials/form/radio_card',
     locals: {

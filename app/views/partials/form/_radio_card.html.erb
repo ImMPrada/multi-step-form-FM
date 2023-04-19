@@ -1,9 +1,25 @@
-<% card_content = image_tag(icon[:url], size: icon[:size], alt: icon[:alt]) +
+<% card_content = content_tag(
+      :div,
+      image_tag(icon[:url], size: icon[:size], alt: icon[:alt]),
+      class: "w-10 h-10"
+    ) +
     content_tag(
       :div,
-      content_tag(:span, plan[:name], class: 'text-base font-bold') +
-      content_tag(:span, plan[:price], class: 'text-sm mt-2 text-soft-gray') +
-      content_tag(:span, plan[:note], class: 'text-xs mt-1.5'),
+      content_tag(
+        :span,
+        plan[:name],
+        class: 'text-base font-bold'
+      ) +
+      content_tag(
+        :span,
+        plan[:price],
+        class: 'text-sm mt-2 text-soft-gray'
+      ) +
+      content_tag(
+        :span,
+        plan[:note],
+        class: 'text-xs mt-1.5'
+      ),
       class: 'flex flex-col'
     )
 %>
@@ -17,10 +33,15 @@
   <%= form.label(
     "#{name.downcase}_#{value.downcase}".to_sym,
     card_content,
-    class: 'flex sm:flex-col flex-row justify-between
-      sm:w-36 sm:h-44
+    class: 'flex
+      sm:flex-col flex-row
+      sm:justify-between justify-start
+      sm:gap-0 gap-5
+      sm:w-36 w-full
+      sm:h-44
       p-5
-      rounded-lg border border-soft-gray
+      border border-soft-gray
+      rounded-lg
       cursor-pointer
       hover:border-purple'
   ) %>
