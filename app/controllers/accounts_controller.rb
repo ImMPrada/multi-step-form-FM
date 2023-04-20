@@ -22,5 +22,7 @@ class AccountsController < ApplicationController
         is_current_step: false
       }
     ]
+
+    @account = Account.new
   end
 end

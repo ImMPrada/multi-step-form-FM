@@ -1,4 +1,55 @@
-"hello world!"
+<%= form_with(model: @account, data: {turbo: false}, class: "min-w-full min-h-full flex flex-col gap-3 justify-between") do |form|%>
+  <%= content_tag(
+    :div,
+    content_tag(
+      :h3,
+      'Personal info',
+      class: 'text-3xl font-bold mb-3'
+    ) +
+    content_tag(
+      :span,
+      'Please provide your name, email address, and phone number.',
+      class: 'block text-base mb-10'
+    ) +
+    render(
+      partial: 'partials/form_components/input_with_helper',
+      locals: {
+        form:,
+        label_text: 'name:',
+        key: :name,
+        form_helper: form.text_field(:name),
+        error_message: 'here is for error message'
+      }
+    ) +
+    render(
+      partial: 'partials/form_components/input_with_helper',
+      locals: {
+        form:,
+        label_text: 'email:',
+        key: :email,
+        form_helper: form.email_field(:email),
+        error_message: 'here is for error message'
+      }
+    ) +
+    render(
+      partial: 'partials/form_components/input_with_helper',
+      locals: {
+        form:,
+        label_text: 'phone:',
+        key: :phone,
+        form_helper: form.telephone_field(:phone),
+        error_message: 'here is for error message'
+      }
+    ),
+    class: 'min-h-full flex flex-col gap-3'
+  ) %>
+
+  <%= content_tag(
+    :div,
+    form.submit('Next Step', { class: 'btn-goahead'}),
+    class: 'min-w-full flex justify-end'
+  ) %>
+<% end %>
 
   <%# input_elements = [form.text_area(:message, size: "70x5"),
     form.hidden_field(:parent_id, value: "foo"),
