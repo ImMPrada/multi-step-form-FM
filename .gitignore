@@ -38,3 +38,5 @@
 !/app/assets/builds/.keep
 
 backup_from_frontendmentor/*
+
+.byebug_history
