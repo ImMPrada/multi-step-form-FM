@@ -1,4 +1,6 @@
 class Account < ApplicationRecord
+  has_one :plan
+
   validates :name, presence: true
   validates :phone, presence: true
   validates :email, presence: true, uniqueness: true, format: {

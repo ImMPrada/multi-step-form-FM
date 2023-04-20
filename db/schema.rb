@@ -24,11 +24,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_20_200410) do
 
   create_table "plans", force: :cascade do |t|
     t.string "name", null: false
-    t.string "frequence", null: false
+    t.integer "frequence_number", null: false
+    t.string "frequence_unit", null: false
     t.float "price", null: false
+    t.text "note", default: "t"
+    t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_plans_on_name", unique: true
+    t.index ["name", "frequence_number", "frequence_unit"], name: "index_plans_on_name_and_frequence_number_and_frequence_unit", unique: true
   end
 
   add_foreign_key "accounts", "plans"
