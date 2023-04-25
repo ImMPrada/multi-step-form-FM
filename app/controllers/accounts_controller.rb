@@ -16,14 +16,30 @@ class AccountsController < ApplicationController
   def select_plan
     steps_current_step(2)
 
-    cookies[:plans_monthly] = Plan.where('active = ? AND frequence_unit = ?', true, 'mo').select(:name, :note, :frequence_number, :frequence_unit)
-    cookies[:plans_yearly] = Plan.where('active = ? AND frequence_unit = ?', true, 'yr').select(:name, :note, :frequence_number, :frequence_unit)
+    @monthly_plans = Plan.where(
+      'active = ? AND frequence_unit = ?', true, 'mo'
+    ).select(:name, :note, :frequence_number, :frequence_unit, :price)
+    @yearly_plans = Plan.where(
+      'active = ? AND frequence_unit = ?', true, 'yr'
+    ).select(:name, :note, :frequence_number, :frequence_unit, :price)
+
+    @account = account
+    @plan = Plan.new  
+  end
+
+  def add_plan
+    @account = account
+    byebug
   end
 
   private
 
   def account_params
     params.require(:account).permit(:name, :email, :phone)
+  end
+
+  def account
+    Account.find(params[:id])
   end
 
   def steps_current_step(current_step_number)
