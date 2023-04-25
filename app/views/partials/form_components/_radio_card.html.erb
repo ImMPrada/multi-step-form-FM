@@ -18,7 +18,7 @@
       content_tag(
         :span,
         plan[:note],
-        class: 'text-xs mt-1.5'
+        class: "text-xs mt-1.5 #{'hidden' unless plan[:note]}"
       ),
       class: 'flex flex-col'
     )
