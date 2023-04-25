@@ -12,6 +12,7 @@ Plan.create(
   frequence_number: 1,
   frequence_unit: 'mo',
   price: 9.00,
+  note: nil
 )
 
 Plan.create(
@@ -27,6 +28,7 @@ Plan.create(
   frequence_number: 1,
   frequence_unit: 'mo',
   price: 12.00,
+  note: nil
 )
 
 Plan.create(
@@ -42,6 +44,7 @@ Plan.create(
   frequence_number: 1,
   frequence_unit: 'mo',
   price: 15.00,
+  note: nil
 )
 
 Plan.create(
