@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :accounts do
     get 'select_plan', on: :member, to: 'accounts#select_plan'
     post 'add_plan', on: :member, to: 'accounts#add_plan'
+    get 'select_addons', on: :member, to: 'accounts#select_addons'
     post 'select_add_ons'
     post 'summary'
   end

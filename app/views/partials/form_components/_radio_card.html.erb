@@ -27,11 +27,11 @@
 <div>
   <%= form.radio_button(
     "#{name}".downcase.to_sym,
-    "#{value}".downcase.to_sym,
+    "#{value}_#{plan[:frequence_unit]}".downcase.to_sym,
     class: 'hidden hidden-radio-for-card'
   )%>
   <%= form.label(
-    "#{name.downcase}_#{value.downcase}".to_sym,
+    "#{name}_#{value}_#{plan[:frequence_unit]}".downcase.to_sym,
     card_content,
     class: 'flex
       sm:flex-col flex-row

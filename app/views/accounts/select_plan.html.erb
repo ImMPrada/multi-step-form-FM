@@ -1,0 +1,83 @@
+<% monthly_plans = cookies[:plans_monthly] %>
+<% yearly_plans = cookies[:plans_yearly] %>
+<% plan = cookies[:plans_yearly] %>
+
+<%= form_with(
+  model: @plan,
+  url: add_plan_account_path([@account, @plan]),
+  data: {
+    turbo: false,
+  },
+  class: "min-w-full min-h-full flex flex-col gap-3 justify-between"
+) do |form|%>
+  <%= content_tag(
+    :div,
+    content_tag(
+      :h3,
+      'Select your plan',
+      class: 'text-3xl font-bold mb-3'
+    ) +
+    content_tag(
+      :span,
+      'You have the option of monthly or yearly billing.',
+      class: 'block text-base mb-10'
+    ),
+    class: 'min-h-full flex flex-col gap-3'
+  ) %>
+  
+  <div class = "w-full flex justify-around">
+    <% @monthly_plans.each do |plan| %>
+        <%= render(
+          partial: 'partials/form_components/radio_card',
+          locals: {
+            form:,
+            plan:,
+            name: 'plan',
+            value: plan.name,
+            icon: {
+              url: "#{plan.name.downcase}_plan_icon.png",
+              size: '40x40',
+              alt: "option card for #{plan.name}"
+            }
+          }
+        ) %>
+    <% end %>
+  </div>
+
+  <div class = "w-full flex justify-around">
+    <% @yearly_plans.each do |plan| %>
+        <%= render(
+          partial: 'partials/form_components/radio_card',
+          locals: {
+            form:,
+            plan:,
+            name: 'plan',
+            value: plan.name,
+            icon: {
+              url: "#{plan.name.downcase}_plan_icon.png",
+              size: '40x40',
+              alt: "option card for #{plan.name}"
+            }
+          }
+        ) %>
+    <% end %>
+  </div>
+
+  <%= render(
+    partial: 'partials/form_components/toggle_button',
+    locals: {
+      form:,
+      name: 'frecuence',
+      value: {
+        left: 'monthly',
+        right: 'yearly'
+      }
+    }
+  ) %>
+
+  <%= content_tag(
+    :div,
+    form.submit('Next Step', { class: 'btn-goahead'}),
+    class: 'min-w-full flex justify-end'
+  ) %>
+<% end %>

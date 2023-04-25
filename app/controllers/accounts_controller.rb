@@ -24,18 +24,42 @@ class AccountsController < ApplicationController
     ).select(:name, :note, :frequence_number, :frequence_unit, :price)
 
     @account = account
-    @plan = Plan.new  
+    @plan = @account.plan || Plan.new
   end
 
   def add_plan
     @account = account
-    byebug
+    @plan = Plan.find_by(
+      "LOWER(name) = ? AND frequence_number = 1 AND frequence_unit = ?",
+      plan_name.downcase, plan_frequency
+    )
+
+    @account.updates(plan: @plan)
+    redirect_to select_addons_account_path(@account)
+  end
+
+  def select_addons
+    steps_current_step(3)
   end
 
   private
 
   def account_params
     params.require(:account).permit(:name, :email, :phone)
+  end
+
+  def plan_params
+    params.require(:plan).permit(:plan, :frecuence)
+  end
+
+  def plan_frequency
+    return unless plan_params[:frecuence]
+
+    plan_params[:frecuence] == 'monthly' ? 'mo' : 'yr'
+  end
+
+  def plan_name
+    plan_params[:plan].split('_').first
   end
 
   def account
