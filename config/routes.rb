@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   resources :accounts, only: [:new, :create]
 
-  resource :account, only: [:show] do
-    resources :plans, only: [:new, :create]
-    resources :addo_ons, only: [:new, :create]
-    resources :payments, only: [:new, :create]
+  resources :accounts do
+    get 'select_plan', on: :member, to: 'accounts#select_plan'
+    post 'add_plan', on: :member, to: 'accounts#add_plan'
+    post 'select_add_ons'
+    post 'summary'
   end
 end
