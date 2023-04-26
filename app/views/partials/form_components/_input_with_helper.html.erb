@@ -1,0 +1,21 @@
+<%= content_tag(
+      :div,
+      form.label(
+        key,
+        label_text,
+        class: 'block
+                text-base
+                font-bold') +
+      content_tag(
+        :span,
+        error_message,
+        class: 'block
+                text-base
+                text-red'),
+      class: 'min-h-full
+              flex
+              justify-between
+              mb-2'
+    ) +
+    form_helper
+%>

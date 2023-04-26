@@ -16,7 +16,8 @@ module.exports = {
         'dark': '#022959',
         'dark-white': '#f8f9ff',
         'soft-gray': '#9699aa',
-        'purple': '#483eff'
+        'purple': '#483eff',
+        'sky-blue': '#bee2fd',
       },
       fontSize: {
         'base': [
@@ -38,6 +39,14 @@ module.exports = {
           },
         ],
       },
+      width: {
+        '68.5': '17.125rem',
+        '112.5': '28.125rem',
+        '235': '58.75rem',
+      },
+      height: {
+        '142': '35.5rem',
+      }
     },
   },
   plugins: [

@@ -1,0 +1,69 @@
+<%= form_with(model: @account, data: {turbo: false}, class: "min-w-full min-h-full flex flex-col gap-3 justify-between") do |form|%>
+  <%= content_tag(
+    :div,
+    content_tag(
+      :h3,
+      'Personal info',
+      class: 'text-3xl font-bold mb-3'
+    ) +
+    content_tag(
+      :span,
+      'Please provide your name, email address, and phone number.',
+      class: 'block text-base mb-10'
+    ) +
+    render(
+      partial: 'partials/form_components/input_with_helper',
+      locals: {
+        form:,
+        label_text: 'name:',
+        key: :name,
+        form_helper: form.text_field(:name, { placeholder: 'John Doe' }),
+        error_message: 'here is for error message',
+      }
+    ) +
+    render(
+      partial: 'partials/form_components/input_with_helper',
+      locals: {
+        form:,
+        label_text: 'email:',
+        key: :email,
+        form_helper: form.email_field(:email, { placeholder: 'mail@domine.com' }),
+        error_message: 'here is for error message'
+      }
+    ) +
+    render(
+      partial: 'partials/form_components/input_with_helper',
+      locals: {
+        form:,
+        label_text: 'phone:',
+        key: :phone,
+        form_helper: form.telephone_field(:phone, { placeholder: '3002341234' }),
+        error_message: 'here is for error message'
+      }
+    ),
+    class: 'min-h-full flex flex-col gap-3'
+  ) %>
+
+  <%= content_tag(
+    :div,
+    form.submit('Next Step', { class: 'btn-goahead'}),
+    class: 'min-w-full flex justify-end'
+  ) %>
+<% end %>
+
+  <%# input_elements = [form.text_area(:message, size: "70x5"),
+    form.hidden_field(:parent_id, value: "foo"),
+    form.password_field(:password),
+    form.number_field(:price, in: 1.0..20.0, step: 0.5),
+    form.range_field(:discount, in: 1..100),
+    form.date_field(:born_on),
+    form.time_field(:started_at),
+    form.datetime_local_field(:graduation_day),
+    form.month_field(:birthday_month),
+    form.week_field(:birthday_week),
+    form.search_field(:name),
+    form.email_field(:address),
+    form.telephone_field(:phone),
+    form.url_field(:homepage),
+    form.color_field(:favorite_color)]
+  %>
