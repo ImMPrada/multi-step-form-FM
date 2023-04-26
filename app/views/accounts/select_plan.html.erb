@@ -35,7 +35,8 @@
                 url: "#{plan.name.downcase}_plan_icon.png",
                 size: '40x40',
                 alt: "option card for #{plan.name}"
-              }
+              },
+              checked: "#{plan.name}_#{plan[:frequence_unit]}".downcase == "#{@plan.name}_#{@plan[:frequence_unit]}".downcase
             }
           ) %>
       <% end %>
@@ -56,7 +57,8 @@
                 url: "#{plan.name.downcase}_plan_icon.png",
                 size: '40x40',
                 alt: "option card for #{plan.name}"
-              }
+              },
+              checked: "#{plan.name}_#{plan[:frequence_unit]}".downcase == "#{@plan.name}_#{@plan[:frequence_unit]}".downcase
             }
           ) %>
       <% end %>
@@ -68,9 +70,13 @@
     locals: {
       form:,
       name: 'frecuence',
-      value: {
+      checked: @plan.frequence_unit == 'yr',
+      dispossed_values: {
         left: 'monthly',
         right: 'yearly'
+      },
+      data: {
+        tea: 'false',
       }
     }
   ) %>

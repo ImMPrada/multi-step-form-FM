@@ -1,8 +1,12 @@
 <% toggle = form.check_box(
     "#{name.downcase}".to_sym,
-    {class: "hidden peer"},
-    value[:left].downcase,
-    value[:right].downcase
+    {
+      class: "hidden peer",
+      checked:,
+      data:
+    },
+    dispossed_values[:left].downcase,
+    dispossed_values[:right].downcase
   ) +
   content_tag(
     :div,
@@ -36,18 +40,18 @@
 
 <% card_content = content_tag(
     :span,
-    value[:left],
+    dispossed_values[:left],
     class: 'text-soft-gray'
   ) +
   content_tag(
     :span,
     toggle,
-    class: 'relative'
+    class: "relative #{checked ? 'text-soft-gray' : 'text-dark'}"
   ) +
   content_tag(
     :span,
-    value[:right],
-    class: 'text-dark'
+    dispossed_values[:right],
+    class: "#{checked ? 'text-dark' : 'text-soft-gray'}"
   )
 %>
 
