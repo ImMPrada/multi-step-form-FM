@@ -7,9 +7,12 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
+    @account.plan = Plan.new
 
     if @account.save
       redirect_to select_plan_account_path(@account)
+    else
+      render :new
     end
   end
 
