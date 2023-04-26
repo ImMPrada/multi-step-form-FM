@@ -1,4 +1,11 @@
-<%= form_with(model: @account, data: {turbo: false}, class: "min-w-full min-h-full flex flex-col gap-3 justify-between") do |form|%>
+<%= form_with(
+  model: @account,
+  data: {
+    turbo: false,
+    url: accounts_path(@account)
+  },
+  class: "min-w-full min-h-full flex flex-col gap-3 justify-between"
+) do |form|%>
   <%= content_tag(
     :div,
     content_tag(
