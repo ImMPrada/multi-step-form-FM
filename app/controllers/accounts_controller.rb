@@ -27,7 +27,9 @@ class AccountsController < ApplicationController
     ).select(:name, :note, :frequence_number, :frequence_unit, :price)
 
     @account = account
-    @plan = @account.plan || Plan.new
+    @plan = Plan.new
+    @plan.frequence_unit = 'yr'
+    @plan.frequence_number = 1
   end
 
   def add_plan
