@@ -20,66 +20,70 @@
     ),
     class: 'min-h-full flex flex-col gap-3'
   ) %>
-  
-  <% if @plan.frequence_unit == 'mo'%>
-    <div class = "w-full flex justify-around">
-      <% @monthly_plans.each do |plan| %>
-          <%= render(
-            partial: 'partials/form_components/radio_card',
-            locals: {
-              form:,
-              plan:,
-              name: 'plan',
-              value: plan.name,
-              icon: {
-                url: "#{plan.name.downcase}_plan_icon.png",
-                size: '40x40',
-                alt: "option card for #{plan.name}"
-              },
-              checked: "#{plan.name}_#{plan[:frequence_unit]}".downcase == "#{@plan.name}_#{@plan[:frequence_unit]}".downcase
-            }
-          ) %>
-      <% end %>
-    </div>
-  <% end %>
 
-  <% if @plan.frequence_unit == 'yr'%>
-    <div class = "w-full flex justify-around">
-      <% @yearly_plans.each do |plan| %>
-          <%= render(
-            partial: 'partials/form_components/radio_card',
-            locals: {
-              form:,
-              plan:,
-              name: 'plan',
-              value: plan.name,
-              icon: {
-                url: "#{plan.name.downcase}_plan_icon.png",
-                size: '40x40',
-                alt: "option card for #{plan.name}"
-              },
-              checked: "#{plan.name}_#{plan[:frequence_unit]}".downcase == "#{@plan.name}_#{@plan[:frequence_unit]}".downcase
-            }
-          ) %>
-      <% end %>
-    </div>
-  <% end %>
+  <div id='sadsad'>
+  </div>
+  <div id='optionsContainer' data-controller="plan">
 
-  <%= render(
-    partial: 'partials/form_components/toggle_button',
-    locals: {
-      form:,
-      name: 'frecuence',
-      checked: @plan.frequence_unit == 'yr',
-      dispossed_values: {
-        left: 'monthly',
-        right: 'yearly'
-      },
-      data: {
-        tea: 'false',
+    <%# if @plan.frequence_unit == 'mo'%>
+      <div id='monthly_plans_options' class = "w-full flex justify-around">
+        <% @monthly_plans.each do |plan| %>
+            <%= render(
+              partial: 'partials/form_components/radio_card',
+              locals: {
+                form:,
+                plan:,
+                name: 'plan',
+                value: plan.name,
+                icon: {
+                  url: "#{plan.name.downcase}_plan_icon.png",
+                  size: '40x40',
+                  alt: "option card for #{plan.name}"
+                },
+                checked: "#{plan.name}_#{plan[:frequence_unit]}".downcase == "#{@plan.name}_#{@plan[:frequence_unit]}".downcase
+              }
+            ) %>
+        <% end %>
+      </div>
+    <%# end %>
+
+    <%# if @plan.frequence_unit == 'yr'%>
+      <div id='yearly_plans_options' class = "w-full flex justify-around">
+        <% @yearly_plans.each do |plan| %>
+            <%= render(
+              partial: 'partials/form_components/radio_card',
+              locals: {
+                form:,
+                plan:,
+                name: 'plan',
+                value: plan.name,
+                icon: {
+                  url: "#{plan.name.downcase}_plan_icon.png",
+                  size: '40x40',
+                  alt: "option card for #{plan.name}"
+                },
+                checked: "#{plan.name}_#{plan[:frequence_unit]}".downcase == "#{@plan.name}_#{@plan[:frequence_unit]}".downcase
+              }
+            ) %>
+        <% end %>
+      </div>
+    <%# end %>
+
+    <%= render(
+      partial: 'partials/form_components/toggle_button',
+      locals: {
+        form:,
+        name: 'frecuence',
+        checked: @plan.frequence_unit == 'yr',
+        dispossed_values: {
+          left: 'monthly',
+          right: 'yearly'
+        },
+        data: { action: "click->plan#changePlanFrequence" }
       }
-    }
-  ) %>
+    ) %>
+
+  </div>
 
   <%= content_tag(
     :div,
