@@ -36,11 +36,15 @@ class AccountsController < ApplicationController
     @account = account
     @plan = Plan.find_by(
       "LOWER(name) = ? AND frequence_number = 1 AND frequence_unit = ?",
-      plan_name.downcase, plan_frequency
+      plan_name, plan_frequency
     )
 
-    @account.updates(plan: @plan)
-    redirect_to select_addons_account_path(@account)
+    @account.plan = @plan
+    if @account.save
+      redirect_to select_addons_account_path(@account)
+    else
+      render :select_plan
+    end
   end
 
   def select_addons
@@ -58,13 +62,11 @@ class AccountsController < ApplicationController
   end
 
   def plan_frequency
-    return unless plan_params[:frecuence]
-
-    plan_params[:frecuence] == 'monthly' ? 'mo' : 'yr'
+    plan_params[:plan].split('_').last
   end
 
   def plan_name
-    plan_params[:plan].split('_').first
+    plan_params[:plan].split('_').first.downcase
   end
 
   def account
