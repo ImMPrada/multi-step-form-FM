@@ -1,0 +1,10 @@
+<% steps.each do |step| %>
+  <%= render(
+    partial: 'partials/steps/each_sidebar_label',
+    locals: {
+      number: step[:number],
+      title: step[:title],
+      is_current_step: step[:is_current_step]
+    }
+  ) %>
+<% end %>
