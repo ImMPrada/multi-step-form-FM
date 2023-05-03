@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+<img width="820" alt="image" src="https://user-images.githubusercontent.com/26731448/235964928-5d8f758f-76fc-466e-95c0-97ee19006ea2.png">
+
