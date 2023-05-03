@@ -28,7 +28,10 @@
   <%= form.radio_button(
     "#{name}".downcase.to_sym,
     "#{value}_#{plan[:frequence_unit]}".downcase.to_sym,
-    class: 'hidden hidden-radio-for-card'
+    {
+      class: 'hidden hidden-radio-for-card',
+      checked:
+    }
   )%>
   <%= form.label(
     "#{name}_#{value}_#{plan[:frequence_unit]}".downcase.to_sym,

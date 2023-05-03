@@ -40,3 +40,5 @@
 backup_from_frontendmentor/*
 
 .byebug_history
+
+node_modules/*
