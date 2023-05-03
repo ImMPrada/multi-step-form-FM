@@ -10,24 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_155441) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_200004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "account_users", force: :cascade do |t|
+  create_table "account_admins", force: :cascade do |t|
     t.bigint "account_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_account_users_on_account_id"
-    t.index ["user_id"], name: "index_account_users_on_user_id"
+    t.index ["account_id", "admin_id"], name: "index_account_admins_on_account_id_and_admin_id", unique: true
+    t.index ["account_id"], name: "index_account_admins_on_account_id"
+    t.index ["admin_id"], name: "index_account_admins_on_admin_id"
   end
 
   create_table "accounts", force: :cascade do |t|
     t.string "activated", default: "f", null: false
-    t.integer "current_onboarding_step", default: 2, null: false
+    t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_accounts_on_owner_id"
+  end
+
+  create_table "onboardings", force: :cascade do |t|
+    t.string "token", null: false
+    t.string "status", default: "pending", null: false
+    t.integer "current_step", default: 2, null: false
+    t.bigint "account_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_onboardings_on_account_id"
+    t.index ["token"], name: "index_onboardings_on_token", unique: true
+    t.index ["user_id"], name: "index_onboardings_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -37,19 +52,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_155441) do
     t.index ["type"], name: "index_roles_on_type", unique: true
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_user_roles_on_user_id_and_role_id", unique: true
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "username"
+    t.string "nick"
     t.string "email", null: false
     t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "role_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "account_users", "accounts"
-  add_foreign_key "account_users", "users"
-  add_foreign_key "users", "roles"
+  add_foreign_key "account_admins", "accounts"
+  add_foreign_key "account_admins", "users", column: "admin_id"
+  add_foreign_key "accounts", "users", column: "owner_id"
+  add_foreign_key "onboardings", "accounts"
+  add_foreign_key "onboardings", "users"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end
