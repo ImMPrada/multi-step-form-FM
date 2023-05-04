@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:accounts).dependent(:destroy) }
-    it { is_expected.to have_many(:onboardings).dependent(:destroy) }
+    it { is_expected.to have_many(:onboardings).with_foreign_key(:owner_id).dependent(:destroy) }
+    it { is_expected.to have_many(:accounts).through(:onboardings).with_foreign_key(:owner_id) }
   end
 end

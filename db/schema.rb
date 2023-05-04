@@ -16,10 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_061945) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "activated", default: "f", null: false
-    t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 
   create_table "onboardings", force: :cascade do |t|
@@ -27,12 +25,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_061945) do
     t.string "status", default: "pending", null: false
     t.integer "current_step", default: 2, null: false
     t.bigint "account_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_onboardings_on_account_id"
+    t.index ["owner_id"], name: "index_onboardings_on_owner_id"
     t.index ["token"], name: "index_onboardings_on_token", unique: true
-    t.index ["user_id"], name: "index_onboardings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,7 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_061945) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "onboardings", "accounts"
-  add_foreign_key "onboardings", "users"
+  add_foreign_key "onboardings", "users", column: "owner_id"
 end

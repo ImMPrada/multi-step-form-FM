@@ -11,7 +11,7 @@ RSpec.describe Onboarding, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:account) }
+    it { is_expected.to belong_to(:owner).class_name('User') }
   end
 end

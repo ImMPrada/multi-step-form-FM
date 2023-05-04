@@ -11,6 +11,6 @@ class User < ApplicationRecord
   }
   validates :phone_number, presence: true
 
-  has_many :accounts, foreign_key: 'owner_id', dependent: :destroy
-  has_many :onboardings, dependent: :destroy
+  has_many :onboardings, dependent: :destroy, foreign_key: :owner_id
+  has_many :accounts, through: :onboardings, foreign_key: :owner_id
 end

@@ -9,7 +9,7 @@ RSpec.describe Account, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to belong_to(:owner).class_name('User').with_foreign_key('owner_id') }
     it { is_expected.to have_one(:onboarding).dependent(:destroy) }
+    it { is_expected.to have_one(:owner).through(:onboarding).source(:owner) }
   end
 end
