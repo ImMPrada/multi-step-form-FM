@@ -6,7 +6,7 @@ class CreateOnboardings < ActiveRecord::Migration[7.0]
       t.integer :current_step, null: false, default: 2
 
       t.references :account, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
+      t.references :owner, null: false, foreign_key: { to_table: :users }
 
       t.timestamps
     end
