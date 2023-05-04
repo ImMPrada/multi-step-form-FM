@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module User
+module Users
   class RegistrationsController < Devise::RegistrationsController
     # before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
@@ -11,9 +11,10 @@ module User
     # end
 
     # POST /resource
-    # def create
-    #   super
-    # end
+    def create
+      byebug
+      # super
+    end
 
     # GET /resource/edit
     # def edit
