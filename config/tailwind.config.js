@@ -12,6 +12,41 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        'dark': '#022959',
+        'dark-white': '#f8f9ff',
+        'soft-gray': '#9699aa',
+        'purple': '#483eff',
+        'sky-blue': '#bee2fd',
+      },
+      fontSize: {
+        'base': [
+          '1rem',
+          {
+            lineHeight: '1.125',
+          },
+        ],
+        'sm': [
+          '0.875rem',
+          {
+            lineHeight: '1.15',
+          },
+        ],
+        'sm': [
+          '0.75rem',
+          {
+            lineHeight: '1.15',
+          },
+        ],
+      },
+      width: {
+        '68.5': '17.125rem',
+        '112.5': '28.125rem',
+        '235': '58.75rem',
+      },
+      height: {
+        '142': '35.5rem',
+      }
     },
   },
   plugins: [
