@@ -11,15 +11,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-dark-white">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <main class="container my-0 w-screen h-screen mx-auto flex flex-col justify-center bg-dark-white">
 
-      <%# side_bar = content_tag(
+      <% side_bar = content_tag(
           :div,
           render(
-            partial: 'partials/steps_sidebar',
+            partial: 'partials/steps/sidebar',
             locals: { steps: @steps }
           ),
           class: '
@@ -40,13 +40,15 @@
       <% form_div = content_tag(
           :div,
           yield,
-          class: 'min-h-full w-112.5 mx-auto py-10 bg-red-100'
+          class: 'min-h-full w-112.5 mx-auto py-4 bg-red-50'
         )
       %>
 
-      <div clas="w-235 h-142 mx-auto rounded-2xl flex gap-5 bg-white p-4">
-        <%= form_div %>
-      </div>
+      <%= content_tag(
+        :div,
+        side_bar + form_div,
+        class: 'w-235 h-142 mx-auto rounded-2xl flex gap-5 bg-white p-4'
+      )%>
 
     </main>
   </body>
