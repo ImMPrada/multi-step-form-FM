@@ -4,7 +4,7 @@ FactoryBot.define do
     status { %w[active inactive].sample }
     current_step { [1, 2, 3].sample }
 
-    association :user
+    association :owner, factory: :user
     association :account
   end
 end
