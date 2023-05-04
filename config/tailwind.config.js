@@ -18,6 +18,7 @@ module.exports = {
         'soft-gray': '#9699aa',
         'purple': '#483eff',
         'sky-blue': '#bee2fd',
+        'dark-blue': '#164aba',
       },
       fontSize: {
         'base': [
