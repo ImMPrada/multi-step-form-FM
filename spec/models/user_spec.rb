@@ -11,10 +11,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:user_roles).dependent(:destroy) }
-    it { is_expected.to have_many(:roles).through(:user_roles) }
-    it { is_expected.to have_many(:account_admins).dependent(:destroy) }
-    it { is_expected.to have_many(:administrated_accounts).through(:account_admins) }
     it { is_expected.to have_many(:accounts).dependent(:destroy) }
     it { is_expected.to have_many(:onboardings).dependent(:destroy) }
   end
