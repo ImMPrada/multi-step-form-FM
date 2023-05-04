@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :accounts, foreign_key: 'owner_id', dependent: :destroy
   has_many :account_admins, foreign_key: 'admin_id', dependent: :destroy
   has_many :administrated_accounts, through: :account_admins
+  has_many :onboardings, dependent: :destroy
 end

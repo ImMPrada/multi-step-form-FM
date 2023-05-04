@@ -12,5 +12,6 @@ RSpec.describe Account, type: :model do
     it { is_expected.to belong_to(:owner).class_name('User').with_foreign_key('owner_id') }
     it { is_expected.to have_many(:account_admins).dependent(:destroy) }
     it { is_expected.to have_many(:admins).through(:account_admins) }
+    it { is_expected.to have_one(:onboarding).dependent(:destroy) }
   end
 end
