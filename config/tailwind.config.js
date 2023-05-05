@@ -33,7 +33,7 @@ module.exports = {
             lineHeight: '1.15',
           },
         ],
-        'sm': [
+        'xs': [
           '0.75rem',
           {
             lineHeight: '1.15',
@@ -46,7 +46,7 @@ module.exports = {
         '235': '58.75rem',
       },
       height: {
-        '142': '35.5rem',
+        '180': '45rem',
       }
     },
   },

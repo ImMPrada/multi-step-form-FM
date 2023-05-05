@@ -2,12 +2,16 @@
 
 module Users
   class SessionsController < Devise::SessionsController
+    layout 'onboarding_application'
+    include Steps::StepsList
+
     # before_action :configure_sign_in_params, only: [:create]
 
     # GET /resource/sign_in
-    # def new
-    #   super
-    # end
+    def new
+      change_current_step(1)
+      super
+    end
 
     # POST /resource/sign_in
     # def create
