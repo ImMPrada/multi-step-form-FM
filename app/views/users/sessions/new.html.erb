@@ -1,26 +1,63 @@
-<h2>Log in</h2>
+<%=
+  form_with(
+    model: @user,
+    url: user_session_path(@user),
+    class: 'flex flex-col align-between justify-between min-h-full'
+  ) do |form| 
+%>
+  <div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <h3 class="text-2xl font-bold mb-2">
+      Continue an onboarding
+    </h3>
+    <span class="block text-sm mb-4">
+      Please login to continue with a pending onboarding.
+    </span>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <%=
+      render(
+        partial: 'partials/form_components/input_with_helper',
+        locals: {
+          form:,
+          label_text: 'Email Address:',
+          key: :email,
+          form_helper: form.email_field(:email, { placeholder: Faker::Internet.email }),
+          error_message: 'here is for error message'
+        }
+      )
+    %>
 
-  <% if devise_mapping.rememberable? %>
+    <%=
+      render(
+        partial: 'partials/form_components/input_with_helper',
+        locals: {
+          form:,
+          label_text: 'Password:',
+          key: :password,
+          form_helper: form.password_field(:password, { placeholder: '******' }),
+          error_message: 'here is for error message'
+        }
+      )
+    %>
+
+    <% if devise_mapping.rememberable? %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= form.check_box :remember_me %>
+      <%= form.label :remember_me %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  </div>
+
+  <div class="w-full flex justify-between align-center">
+    <%=
+      link_to(
+        "Sign up with a new account",
+        new_user_registration_path,
+        class: 'blue-link'
+      )
+    %>
+
+    <%= form.submit 'Go and continue', class:'btn-next' %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

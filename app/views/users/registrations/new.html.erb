@@ -7,10 +7,10 @@
 %>
   <div>
 
-    <h3 class="text-2xl font-bold mb-3">
-      Personal info
+    <h3 class="text-2xl font-bold mb-2">
+      Create a new user with account
     </h3>
-    <span class="block text-sm mb-8">
+    <span class="block text-sm mb-4">
       Please provide your name, email address, and phone number.
     </span>
 
@@ -53,34 +53,45 @@
       )
     %>
 
-    <%=
-      render(
-        partial: 'partials/form_components/input_with_helper',
-        locals: {
-          form:,
-          label_text: 'Password:',
-          key: :password,
-          form_helper: form.password_field(:password, { placeholder: '******' }),
-          error_message: 'here is for error message'
-        }
-      )
-    %>
+    <div class="w-full flex justify-between">
+      <%=
+        render(
+          partial: 'partials/form_components/input_with_helper',
+          locals: {
+            form:,
+            label_text: 'Password:',
+            key: :password,
+            form_helper: form.password_field(:password, { placeholder: '******' }),
+            error_message: 'here is for error message'
+          }
+        )
+      %>
 
-    <%=
-      render(
-        partial: 'partials/form_components/input_with_helper',
-        locals: {
-          form:,
-          label_text: 'Confirm Password:',
-          key: :password_confirmation,
-          form_helper: form.password_field(:password_confirmation, { placeholder: '******' }),
-          error_message: 'here is for error message'
-        }
-      )
-    %>
+      <%=
+        render(
+          partial: 'partials/form_components/input_with_helper',
+          locals: {
+            form:,
+            label_text: 'Confirm Password:',
+            key: :password_confirmation,
+            form_helper: form.password_field(:password_confirmation, { placeholder: '******' }),
+            error_message: 'here is for error message'
+          }
+        )
+      %>
+    </div>
+
   </div>
 
-  <div class="w-full flex justify-end">
+  <div class="w-full flex justify-between align-center">
+    <%=
+      link_to(
+        "Continue/start an onboading",
+        new_user_session_path,
+        class: 'blue-link'
+      )
+    %>
+
     <%= form.submit 'Next Step', class:'btn-next' %>
   </div>
 <% end %>

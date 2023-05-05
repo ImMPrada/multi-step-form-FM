@@ -4,12 +4,9 @@ class OnboardingsController < ApplicationController
 
   before_action :authenticate_user!
 
-  # def new
-  #   steps_list(1)
-  #   @onboarding = Onboarding.new
-  #   @onboarding.owner = User.new
-  #   @onboarding.account = Account.new
-  # end
+  def index
+    change_current_step(1)
+  end
 
   def show
     change_current_step(2)

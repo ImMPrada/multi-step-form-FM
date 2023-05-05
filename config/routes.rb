@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root 'onboardings#show'
+  root 'onboardings#index'
 
-  resources :onboardings, only: %i[show]
+  resources :onboardings, only: %i[index show]
 end
