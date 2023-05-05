@@ -7,5 +7,8 @@
   .btn-next {
     @apply rounded-lg py-4 px-6 block font-bold text-base text-white bg-dark-blue cursor-pointer;
   }
+  .blue-link {
+    @apply py-4 block underline text-base text-blue-500 cursor-pointer;
+  }
 }
 
