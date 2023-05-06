@@ -1,6 +1,10 @@
 class Account < ApplicationRecord
-  validates :activated, inclusion: { in: %w[true false] }, presence: true
+  validates :name, presence: true
+
+  belongs_to :plan
 
   has_one :onboarding, dependent: :destroy
-  has_one :owner, through: :onboarding, source: :owner
+  has_one :owner, through: :onboarding
+  has_many :account_addons, dependent: :destroy
+  has_many :addons, through: :account_addons
 end
