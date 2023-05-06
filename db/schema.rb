@@ -15,13 +15,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
   enable_extension "plpgsql"
 
   create_table "account_addons", force: :cascade do |t|
-    t.bigint "accounts_id", null: false
-    t.bigint "addons_id", null: false
+    t.bigint "account_id", null: false
+    t.bigint "addon_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["accounts_id", "addons_id"], name: "index_account_addons_on_accounts_id_and_addons_id", unique: true
-    t.index ["accounts_id"], name: "index_account_addons_on_accounts_id"
-    t.index ["addons_id"], name: "index_account_addons_on_addons_id"
+    t.index ["account_id", "addon_id"], name: "index_account_addons_on_account_id_and_addon_id", unique: true
+    t.index ["account_id"], name: "index_account_addons_on_account_id"
+    t.index ["addon_id"], name: "index_account_addons_on_addon_id"
   end
 
   create_table "accounts", force: :cascade do |t|
@@ -98,8 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "account_addons", "accounts", column: "accounts_id"
-  add_foreign_key "account_addons", "addons", column: "addons_id"
+  add_foreign_key "account_addons", "accounts"
+  add_foreign_key "account_addons", "addons"
   add_foreign_key "accounts", "plans"
   add_foreign_key "addons", "recurrences"
   add_foreign_key "onboardings", "accounts"
