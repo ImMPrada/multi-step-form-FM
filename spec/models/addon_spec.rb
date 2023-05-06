@@ -13,5 +13,6 @@ RSpec.describe Addon, type: :model do
     it { is_expected.to have_many(:account_addons).dependent(:destroy) }
     it { is_expected.to have_many(:accounts).through(:account_addons) }
     it { is_expected.not_to have_many(:accounts).through(:account_addons).dependent(:destroy) }
+    it { is_expected.to belong_to(:recurrence) }
   end
 end
