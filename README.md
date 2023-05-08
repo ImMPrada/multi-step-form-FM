@@ -23,5 +23,5 @@ Things you may want to cover:
 
 * ...
 
-<img width="820" alt="image" src="https://user-images.githubusercontent.com/26731448/235964928-5d8f758f-76fc-466e-95c0-97ee19006ea2.png">
+<img width="781" alt="image" src="https://user-images.githubusercontent.com/26731448/236834476-8dee08d8-1fe2-4746-aba0-61a5501298ce.png">
 
