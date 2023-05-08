@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :account do
-    activated { %w[true false].sample }
+    name { Faker::Lorem.word }
+
+    association :plan
   end
 end
