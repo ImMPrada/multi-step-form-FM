@@ -82,10 +82,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
     t.datetime "limit_date"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.bigint "accounts_id", null: false
+    t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["accounts_id"], name: "index_suscriptions_on_accounts_id"
+    t.index ["account_id"], name: "index_suscriptions_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,5 +105,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
   add_foreign_key "onboardings", "accounts"
   add_foreign_key "onboardings", "users", column: "owner_id"
   add_foreign_key "plans", "recurrences"
-  add_foreign_key "suscriptions", "accounts", column: "accounts_id"
+  add_foreign_key "suscriptions", "accounts"
 end

@@ -7,7 +7,7 @@ class CreateSuscriptions < ActiveRecord::Migration[7.0]
       t.datetime :start_date
       t.datetime :end_date
 
-      t.references :accounts, null: false, foreign_key: true
+      t.references :account, null: false, foreign_key: true
 
       t.timestamps
     end
