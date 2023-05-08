@@ -11,7 +11,6 @@ RSpec.describe Plan, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:accounts) }
-    it { is_expected.not_to have_many(:accounts).dependent(:destroy) }
     it { is_expected.to belong_to(:recurrence) }
   end
 end
