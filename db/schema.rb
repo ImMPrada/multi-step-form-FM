@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "plan_id", null: false
+    t.bigint "plan_id"
     t.index ["plan_id"], name: "index_accounts_on_plan_id"
   end
 
