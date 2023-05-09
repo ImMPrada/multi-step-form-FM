@@ -1,7 +1,7 @@
 class Account < ApplicationRecord
   validates :name, presence: true
 
-  belongs_to :plan
+  belongs_to :plan, optional: true
 
   has_one :onboarding, dependent: :destroy
   has_one :owner, through: :onboarding
