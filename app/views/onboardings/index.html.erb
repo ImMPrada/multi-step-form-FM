@@ -1,1 +1,14 @@
-onboading#index
+<div class="flex flex-col align-between justify-between min-h-full">
+  <div class="flex flex-col">
+    onboading#index
+
+    <% @onboardings.each do |onboarding| %>
+      <span class="block"><%= onboarding.account.name %></span> 
+      <%= link_to "Some Page", continue_onboarding_path(onboarding) %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Sign-out", destroy_user_session_path, data: { turbo_method: :delete } %>
+  </div>
+</div>
