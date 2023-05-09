@@ -6,9 +6,27 @@ class OnboardingsController < ApplicationController
 
   def index
     change_current_step(1)
+    @onboardings = current_user.onboardings.includes(:account)
+  end
+
+  def continue
+    redirect_to path_by_step
   end
 
   def select_plan
     change_current_step(2)
+  end
+
+  private
+
+  def onboarding
+    @onboarding ||= Onboarding.find(params[:id])
+  end
+
+  def path_by_step
+    case onboarding.current_step
+    when 2
+      select_plan_onboarding_path(onboarding)
+    end
   end
 end
