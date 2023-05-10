@@ -1,9 +1,13 @@
 module Steps
   module StepsList
-    def change_current_step(step_number)
-      @steps = steps
+    extend ActiveSupport::Concern
 
-      @steps.each do |step|
+    included do
+      before_action :steps
+    end
+
+    def change_current_step(step_number)
+      steps.each do |step|
         if step[:number] == step_number
           step[:is_current_step] = true
         end
@@ -13,7 +17,7 @@ module Steps
     private
 
     def steps
-      @steps = [
+      @steps ||= [
         {
           number: 1, title: 'YOUR INFO', is_current_step: false
         },
@@ -27,6 +31,13 @@ module Steps
           number: 4, title: 'SUMMARY', is_current_step: false
         }
       ]
+    end
+
+    def path_by_step
+      case onboarding.current_step
+      when 2
+        select_plan_onboarding_path(onboarding)
+      end
     end
   end
 end

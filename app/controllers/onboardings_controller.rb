@@ -22,11 +22,4 @@ class OnboardingsController < ApplicationController
   def onboarding
     @onboarding ||= Onboarding.find(params[:id])
   end
-
-  def path_by_step
-    case onboarding.current_step
-    when 2
-      select_plan_onboarding_path(onboarding)
-    end
-  end
 end
