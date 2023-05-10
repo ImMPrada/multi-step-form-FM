@@ -1,0 +1,63 @@
+<%=
+  form_with(
+    model: @user,
+    url: user_session_path(@user),
+    class: 'flex flex-col align-between justify-between min-h-full'
+  ) do |form| 
+%>
+  <div>
+
+    <h3 class="text-2xl font-bold mb-2">
+      Continue an onboarding
+    </h3>
+    <span class="block text-sm mb-4">
+      Please login to continue with a pending onboarding.
+    </span>
+
+    <%=
+      render(
+        partial: 'partials/form_components/input_with_helper',
+        locals: {
+          form:,
+          label_text: 'Email Address:',
+          key: :email,
+          form_helper: form.email_field(:email, { placeholder: Faker::Internet.email }),
+          error_message: 'here is for error message'
+        }
+      )
+    %>
+
+    <%=
+      render(
+        partial: 'partials/form_components/input_with_helper',
+        locals: {
+          form:,
+          label_text: 'Password:',
+          key: :password,
+          form_helper: form.password_field(:password, { placeholder: '******' }),
+          error_message: 'here is for error message'
+        }
+      )
+    %>
+
+    <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= form.check_box :remember_me %>
+      <%= form.label :remember_me %>
+    </div>
+  <% end %>
+
+  </div>
+
+  <div class="w-full flex justify-between align-center">
+    <%=
+      link_to(
+        "Sign up with a new account",
+        new_user_registration_path,
+        class: 'blue-link'
+      )
+    %>
+
+    <%= form.submit 'Go and continue', class:'btn-next' %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<div class="min-h-full flex flex-col mb-4 gap-1">
+  <%= form.label(
+    key,
+    label_text,
+    class: 'block text-base font-bold'
+  ) %>
+  <span class="block text-sm text-red-500">
+    <%= error_message %>
+  </span>
+  <%= form_helper %>
+</div>
