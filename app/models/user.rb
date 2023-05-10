@@ -10,6 +10,8 @@ class User < ApplicationRecord
     message: 'invalid email address'
   }
   validates :phone_number, presence: true
+  validates :password, presence: true, confirmation: { message: 'passwords must match' }
+  validates :password_confirmation, presence: true
 
   has_many :onboardings, dependent: :destroy, foreign_key: :owner_id
   has_many :accounts, through: :onboardings, foreign_key: :owner_id
