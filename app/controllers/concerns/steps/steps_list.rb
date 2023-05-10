@@ -33,10 +33,18 @@ module Steps
       ]
     end
 
-    def path_by_step
-      case onboarding.current_step
+    def path_by_step(step)
+      case step
+      when 1
+        # ...
       when 2
         select_plan_onboarding_path(onboarding)
+      when 3
+        # ...
+      when 4
+        # ...
+      else
+        raise StandardError, "Step not found"
       end
     end
   end
