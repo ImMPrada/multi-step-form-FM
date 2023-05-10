@@ -10,7 +10,7 @@ class OnboardingsController < ApplicationController
   end
 
   def continue
-    redirect_to path_by_step
+    redirect_to path_by_step(onboarding.current_step)
   end
 
   def select_plan
