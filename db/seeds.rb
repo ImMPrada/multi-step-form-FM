@@ -6,69 +6,51 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-PaymentRecurrence.destroy_all
-Plan.destroy_all
-
-payment_recurrence = PaymentRecurrence.create(
-  type: 'monthly',
-  days_delta: 0,
-  months_delta: 1,
-  years_delta: 0,
-  acronym: 'mo'
-)
 
 Plan.create(
   name: 'Arcade',
+  frequence_number: 1,
+  frequence_unit: 'mo',
   price: 9.00,
-  note: nil,
-  status: 'active',
-  payment_recurrence:
-)
-
-Plan.create(
-  name: 'Advanced',
-  price: 12.00,
-  note: nil,
-  status: 'active',
-  payment_recurrence:
-)
-
-Plan.create(
-  name: 'Pro',
-  price: 15.00,
-  note: nil,
-  status: 'active',
-  payment_recurrence:
-)
-
-payment_recurrence = PaymentRecurrence.create(
-  type: 'yearly',
-  days_delta: 0,
-  months_delta: 0,
-  years_delta: 1,
-  acronym: 'yr'
+  note: nil
 )
 
 Plan.create(
   name: 'Arcade',
+  frequence_number: 1,
+  frequence_unit: 'yr',
   price: 90.00,
   note: '2 months free',
-  status: 'active',
-  payment_recurrence:
 )
 
 Plan.create(
   name: 'Advanced',
+  frequence_number: 1,
+  frequence_unit: 'mo',
+  price: 12.00,
+  note: nil
+)
+
+Plan.create(
+  name: 'Advanced',
+  frequence_number: 1,
+  frequence_unit: 'yr',
   price: 120.00,
   note: '2 months free',
-  status: 'active',
-  payment_recurrence:
 )
 
 Plan.create(
   name: 'Pro',
+  frequence_number: 1,
+  frequence_unit: 'mo',
+  price: 15.00,
+  note: nil
+)
+
+Plan.create(
+  name: 'Pro',
+  frequence_number: 1,
+  frequence_unit: 'yr',
   price: 150.00,
   note: '2 months free',
-  status: 'active',
-  payment_recurrence:
 )
