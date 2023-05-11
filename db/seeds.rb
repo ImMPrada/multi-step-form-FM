@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-PaymentRecurrence.destroy_all
 Plan.destroy_all
+PaymentRecurrence.destroy_all
 
 payment_recurrence = PaymentRecurrence.create(
   name: 'monthly',
@@ -18,6 +18,7 @@ payment_recurrence = PaymentRecurrence.create(
 )
 
 Plan.create(
+  icon_path: '/1rXqk06/arcade-plan-icon.png',
   name: 'Arcade',
   price: 9.00,
   note: nil,
@@ -26,6 +27,7 @@ Plan.create(
 )
 
 Plan.create(
+  icon_path: '/MspwF5X/advanced-plan-icon.png',
   name: 'Advanced',
   price: 12.00,
   note: nil,
@@ -34,6 +36,7 @@ Plan.create(
 )
 
 Plan.create(
+  icon_path: '/nDGT4xW/pro-plan-icon.png',
   name: 'Pro',
   price: 15.00,
   note: nil,
@@ -50,6 +53,7 @@ payment_recurrence = PaymentRecurrence.create(
 )
 
 Plan.create(
+  icon_path: '/1rXqk06/arcade-plan-icon.png',
   name: 'Arcade',
   price: 90.00,
   note: '2 months free',
@@ -58,6 +62,7 @@ Plan.create(
 )
 
 Plan.create(
+  icon_path: '/MspwF5X/advanced-plan-icon.png',
   name: 'Advanced',
   price: 120.00,
   note: '2 months free',
@@ -66,6 +71,7 @@ Plan.create(
 )
 
 Plan.create(
+  icon_path: '/nDGT4xW/pro-plan-icon.png',
   name: 'Pro',
   price: 150.00,
   note: '2 months free',
