@@ -1,7 +1,9 @@
 class PaymentRecurrence < ApplicationRecord
   validates :type, presence: true, uniqueness: { case_sensitive: false }
-  validates :frecuence, presence: true
   validates :acronym, presence: true
+  validates :days_delta, presence: true
+  validates :months_delta, presence: true
+  validates :years_delta, presence: true
 
   has_many :addons
   has_many :plans
