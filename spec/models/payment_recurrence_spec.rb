@@ -4,8 +4,8 @@ RSpec.describe PaymentRecurrence, type: :model do
   subject(:payment_recurrence) { build(:payment_recurrence) }
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:type) }
-    it { is_expected.to validate_uniqueness_of(:type).case_insensitive }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
     it { is_expected.to validate_presence_of(:acronym) }
     it { is_expected.to validate_presence_of(:days_delta) }
     it { is_expected.to validate_presence_of(:months_delta) }
