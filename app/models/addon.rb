@@ -3,7 +3,7 @@ class Addon < ApplicationRecord
   validates :price, presence: true
   validates :status, presence: true
 
-  belongs_to :recurrence
+  belongs_to :payment_recurrence
 
   has_many :account_addons, dependent: :destroy
   has_many :accounts, through: :account_addons

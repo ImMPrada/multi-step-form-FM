@@ -37,10 +37,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
     t.float "price", null: false
     t.string "status", null: false
     t.string "note"
-    t.bigint "recurrence_id", null: false
+    t.bigint "payment_recurrence_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recurrence_id"], name: "index_addons_on_recurrence_id"
+    t.index ["payment_recurrence_id"], name: "index_addons_on_payment_recurrence_id"
   end
 
   create_table "onboardings", force: :cascade do |t|
@@ -56,24 +56,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
     t.index ["token"], name: "index_onboardings_on_token", unique: true
   end
 
-  create_table "plans", force: :cascade do |t|
-    t.string "name", null: false
-    t.float "price", null: false
-    t.string "status", null: false
-    t.string "note"
-    t.bigint "recurrence_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recurrence_id"], name: "index_plans_on_recurrence_id"
-  end
-
-  create_table "recurrences", force: :cascade do |t|
+  create_table "payment_recurrences", force: :cascade do |t|
     t.string "type", null: false
     t.float "frecuence", null: false
     t.string "acronym", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_recurrences_on_type", unique: true
+    t.index ["type"], name: "index_payment_recurrences_on_type", unique: true
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "price", null: false
+    t.string "status", null: false
+    t.string "note"
+    t.bigint "payment_recurrence_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_recurrence_id"], name: "index_plans_on_payment_recurrence_id"
   end
 
   create_table "suscriptions", force: :cascade do |t|
@@ -106,9 +106,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
   add_foreign_key "account_addons", "accounts"
   add_foreign_key "account_addons", "addons"
   add_foreign_key "accounts", "plans"
-  add_foreign_key "addons", "recurrences"
+  add_foreign_key "addons", "payment_recurrences"
   add_foreign_key "onboardings", "accounts"
   add_foreign_key "onboardings", "users", column: "owner_id"
-  add_foreign_key "plans", "recurrences"
+  add_foreign_key "plans", "payment_recurrences"
   add_foreign_key "suscriptions", "accounts"
 end
