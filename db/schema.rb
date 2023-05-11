@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_221558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,10 +58,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_210256) do
 
   create_table "payment_recurrences", force: :cascade do |t|
     t.string "type", null: false
-    t.float "frecuence", null: false
     t.string "acronym", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "years_delta", default: 0.0, null: false
+    t.float "months_delta", default: 0.0, null: false
+    t.float "days_delta", default: 0.0, null: false
     t.index ["type"], name: "index_payment_recurrences_on_type", unique: true
   end
 

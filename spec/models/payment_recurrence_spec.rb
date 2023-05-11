@@ -6,8 +6,10 @@ RSpec.describe PaymentRecurrence, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:type) }
     it { is_expected.to validate_uniqueness_of(:type).case_insensitive }
-    it { is_expected.to validate_presence_of(:frecuence) }
     it { is_expected.to validate_presence_of(:acronym) }
+    it { is_expected.to validate_presence_of(:days_delta) }
+    it { is_expected.to validate_presence_of(:months_delta) }
+    it { is_expected.to validate_presence_of(:years_delta) }
   end
 
   describe 'associations' do
