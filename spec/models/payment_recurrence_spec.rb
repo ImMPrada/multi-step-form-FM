@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Recurrence, type: :model do
-  subject(:recurrence) { build(:recurrence) }
+RSpec.describe PaymentRecurrence, type: :model do
+  subject(:payment_recurrence) { build(:payment_recurrence) }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:type) }

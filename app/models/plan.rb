@@ -3,7 +3,7 @@ class Plan < ApplicationRecord
   validates :price, presence: true
   validates :status, presence: true
 
-  belongs_to :recurrence
+  belongs_to :payment_recurrence
 
   has_many :accounts
 end

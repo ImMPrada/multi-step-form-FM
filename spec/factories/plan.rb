@@ -5,6 +5,6 @@ FactoryBot.define do
     status { %w[active inactive].sample }
     note { Faker::Lorem.sentence }
 
-    association :recurrence
+    association :payment_recurrence
   end
 end

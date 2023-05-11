@@ -6,7 +6,7 @@ class CreateAddons < ActiveRecord::Migration[7.0]
       t.string :status, null: false
       t.string :note
 
-      t.references :recurrence, null: false, foreign_key: true
+      t.references :payment_recurrence, null: false, foreign_key: true
 
       t.timestamps
     end
