@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :payment_recurrence do
-    type { %w[yearly monthly weekly daily].sample }
+    name { %w[yearly monthly weekly daily].sample }
     acronym { Faker::Lorem.characters(number: 3) }
     days_delta { Faker::Number.between(from: 0.0, to: 30.0) }
     months_delta { Faker::Number.between(from: 0.0, to: 12.0) }
