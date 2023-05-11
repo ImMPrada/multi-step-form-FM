@@ -57,14 +57,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_221558) do
   end
 
   create_table "payment_recurrences", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "name", null: false
     t.string "acronym", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "years_delta", default: 0.0, null: false
     t.float "months_delta", default: 0.0, null: false
     t.float "days_delta", default: 0.0, null: false
-    t.index ["type"], name: "index_payment_recurrences_on_type", unique: true
+    t.index ["name"], name: "index_payment_recurrences_on_name", unique: true
   end
 
   create_table "plans", force: :cascade do |t|
