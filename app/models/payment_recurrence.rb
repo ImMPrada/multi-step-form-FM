@@ -1,4 +1,4 @@
-class Recurrence < ApplicationRecord
+class PaymentRecurrence < ApplicationRecord
   validates :type, presence: true, uniqueness: { case_sensitive: false }
   validates :frecuence, presence: true
   validates :acronym, presence: true
