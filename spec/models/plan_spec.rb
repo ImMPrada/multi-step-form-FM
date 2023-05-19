@@ -7,6 +7,7 @@ RSpec.describe Plan, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:price) }
     it { is_expected.to validate_presence_of(:status) }
+    it { is_expected.to validate_presence_of(:icon_url) }
   end
 
   describe 'associations' do

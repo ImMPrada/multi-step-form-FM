@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_11_221558) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_19_225431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_221558) do
     t.bigint "payment_recurrence_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "icon_url", default: "", null: false
     t.index ["payment_recurrence_id"], name: "index_plans_on_payment_recurrence_id"
   end
 
