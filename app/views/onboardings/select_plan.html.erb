@@ -38,7 +38,8 @@
                   size: '40x40',
                   alt: "option card for #{plan.name}"
                 },
-                checked: false
+                frequence_acronym: 'yo',
+                checked: @account_plan.name == plan.name && @account_plan.payment_recurrence.acronym == 'yo'
               }
             ) %>
         <% end %>
@@ -66,7 +67,8 @@
                   size: '40x40',
                   alt: "option card for #{plan.name}"
                 },
-                checked: false
+                frequence_acronym: 'mo',
+                checked: @account_plan.name == plan.name && @account_plan.payment_recurrence.acronym == 'mo'
               }
             ) %>
         <% end %>
