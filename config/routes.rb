@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :onboardings, only: %i[index show] do
     get :continue, on: :member
     get :select_plan, on: :member
+    post :add_plan, on: :member
   end
 end
