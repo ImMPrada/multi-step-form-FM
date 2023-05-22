@@ -6,92 +6,93 @@
   },
   class: "min-w-full min-h-full flex flex-col gap-3 justify-between"
 ) do |form|%>
-  <div class='min-h-full flex flex-col gap-3'>
-    <h3 class='text-3xl font-bold mb-3'>
-      Select a plan
-    </h3>
-    <span class='block text-base mb-10'>
-      You have the option of monthly or yearly billing.
-    </span>
-  </div>
-
-  <%= form.fields_for(@account_plan) do |plan_form| %>
-    <div data-controller="plan">
-      <div
-        id='yearly_plans_options'
-        class = <%= "
-          #{@account_plan.payment_recurrence.acronym == 'yo' ? 'flex' : 'hidden'}
-          w-full
-          flex justify-around
-        " %>
-      >
-        <% @yearly_plans.each do |plan| %>
-            <%= render(
-              partial: 'partials/form_components/radio_card',
-              locals: {
-                form: plan_form,
-                plan:,
-                name: 'plan',
-                value: plan.name,
-                icon: {
-                  url: "https://i.ibb.co#{plan.icon_url}",
-                  size: '40x40',
-                  alt: "option card for #{plan.name}"
-                },
-                frequence_acronym: 'yo',
-                checked: @account_plan.name == plan.name && @account_plan.payment_recurrence.acronym == 'yo'
-              }
-            ) %>
-        <% end %>
-      </div>
-
-      <div
-        id='monthly_plans_options'
-        class = <%= "
-          #{@account_plan.payment_recurrence.acronym == 'mo' ? 'flex' : 'hidden'}
-          w-full
-          flex
-          justify-around
-        " %>
-      >
-        <% @monthly_plans.each do |plan| %>
-            <%= render(
-              partial: 'partials/form_components/radio_card',
-              locals: {
-                form: plan_form,
-                plan:,
-                name: 'plan',
-                value: plan.name,
-                icon: {
-                  url: "https://i.ibb.co#{plan.icon_url}",
-                  size: '40x40',
-                  alt: "option card for #{plan.name}"
-                },
-                frequence_acronym: 'mo',
-                checked: @account_plan.name == plan.name && @account_plan.payment_recurrence.acronym == 'mo'
-              }
-            ) %>
-        <% end %>
-      </div>
-
-      <%= plan_form.fields_for @account_plan.payment_recurrence do |payment_recurrence_form| %>
-        <%= render(
-          partial: 'partials/form_components/toggle_button',
-          locals: {
-            id_prefix: 'account_plan_payment_recurrence_name',
-            form: payment_recurrence_form,
-            name: 'name',
-            checked: @account_plan.payment_recurrence.acronym == 'yo',
-            dispossed_values: {
-              left: 'monthly',
-              right: 'yearly'
-            },
-            data: { action: "click->plan#changePlanFrequence" }
-          }
-        ) %>
-      <% end %>
+  <div>
+    <div class='min-h-full flex flex-col gap-3'>
+      <h3 class='text-3xl font-bold mb-3'>
+        Select a plan
+      </h3>
+      <span class='block text-base mb-10'>
+        You have the option of monthly or yearly billing.
+      </span>
     </div>
-  <% end %>
+
+    <%= form.fields_for(@account_plan) do |plan_form| %>
+      <div data-controller="plan">
+        <div
+          id='yearly_plans_options'
+          class = <%= "
+            #{@account_plan.payment_recurrence.acronym == 'yo' ? 'flex' : 'hidden'}
+            w-full
+            justify-around
+          " %>
+        >
+          <% @yearly_plans.each do |plan| %>
+              <%= render(
+                partial: 'partials/form_components/radio_card',
+                locals: {
+                  form: plan_form,
+                  plan:,
+                  name: 'plan',
+                  value: plan.name,
+                  icon: {
+                    url: "https://i.ibb.co#{plan.icon_url}",
+                    size: '40x40',
+                    alt: "option card for #{plan.name}"
+                  },
+                  frequence_acronym: 'yo',
+                  checked: @account_plan.name == plan.name && @account_plan.payment_recurrence.acronym == 'yo'
+                }
+              ) %>
+          <% end %>
+        </div>
+
+        <div
+          id='monthly_plans_options'
+          class = <%= "
+            #{@account_plan.payment_recurrence.acronym == 'mo' ? 'flexs' : 'hidden'}
+            w-full
+            justify-around
+          " %>
+        >
+          <% @monthly_plans.each do |plan| %>
+              <%= render(
+                partial: 'partials/form_components/radio_card',
+                locals: {
+                  form: plan_form,
+                  plan:,
+                  name: 'plan',
+                  value: plan.name,
+                  icon: {
+                    url: "https://i.ibb.co#{plan.icon_url}",
+                    size: '40x40',
+                    alt: "option card for #{plan.name}"
+                  },
+                  frequence_acronym: 'mo',
+                  checked: @account_plan.name == plan.name && @account_plan.payment_recurrence.acronym == 'mo'
+                }
+              ) %>
+          <% end %>
+        </div>
+
+        <%= plan_form.fields_for @account_plan.payment_recurrence do |payment_recurrence_form| %>
+          <%= render(
+            partial: 'partials/form_components/toggle_button',
+            locals: {
+              id_prefix: 'account_plan_payment_recurrence_name',
+              form: payment_recurrence_form,
+              name: 'name',
+              checked: @account_plan.payment_recurrence.acronym == 'yo',
+              dispossed_values: {
+                left: 'monthly',
+                right: 'yearly'
+              },
+              data: { action: "click->plan#changePlanFrequence" }
+            }
+          ) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <%= content_tag(
     :div,
