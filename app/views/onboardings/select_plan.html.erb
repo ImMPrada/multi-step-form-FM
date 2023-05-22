@@ -17,7 +17,14 @@
 
   <%= form.fields_for(@account_plan) do |plan_form| %>
     <div data-controller="plan">
-      <div id='yearly_plans_options' class = "w-full flex justify-around">
+      <div
+        id='yearly_plans_options'
+        class = <%= "
+          #{@account_plan.payment_recurrence.acronym == 'yo' ? 'flex' : 'hidden'}
+          w-full
+          flex justify-around
+        " %>
+      >
         <% @yearly_plans.each do |plan| %>
             <%= render(
               partial: 'partials/form_components/radio_card',
@@ -37,7 +44,15 @@
         <% end %>
       </div>
 
-      <div id='monthly_plans_options' class = "w-full flex justify-around">
+      <div
+        id='monthly_plans_options'
+        class = <%= "
+          #{@account_plan.payment_recurrence.acronym == 'mo' ? 'flex' : 'hidden'}
+          w-full
+          flex
+          justify-around
+        " %>
+      >
         <% @monthly_plans.each do |plan| %>
             <%= render(
               partial: 'partials/form_components/radio_card',
