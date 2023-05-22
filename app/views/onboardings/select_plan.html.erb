@@ -1,9 +1,84 @@
-<div class="flex flex-col align-between justify-between min-h-full">
-  <div class="flex flex-col">
-    onboardings#select_plan
+<%= form_with(
+  model: @account,
+  url: add_plan_onboarding_path([@onboarding, @plan]),
+  data: {
+    turbo: false,
+  },
+  class: "min-w-full min-h-full flex flex-col gap-3 justify-between"
+) do |form|%>
+  <div class='min-h-full flex flex-col gap-3'>
+    <h3 class='text-3xl font-bold mb-3'>
+      Select a plan
+    </h3>
+    <span class='block text-base mb-10'>
+      You have the option of monthly or yearly billing.
+    </span>
   </div>
 
-  <div>
-    <%= link_to "Sign-out", destroy_user_session_path, data: { turbo_method: :delete } %>
-  </div>
-</div>
+  <%= form.fields_for(@account_plan) do |plan_form| %>
+    <div data-controller="plan">
+      <div id='yearly_plans_options' class = "w-full flex justify-around">
+        <% @yearly_plans.each do |plan| %>
+            <%= render(
+              partial: 'partials/form_components/radio_card',
+              locals: {
+                form: plan_form,
+                plan:,
+                name: 'plan',
+                value: plan.name,
+                icon: {
+                  url: "https://i.ibb.co#{plan.icon_url}",
+                  size: '40x40',
+                  alt: "option card for #{plan.name}"
+                },
+                checked: false
+              }
+            ) %>
+        <% end %>
+      </div>
+
+      <div id='monthly_plans_options' class = "w-full flex justify-around">
+        <% @monthly_plans.each do |plan| %>
+            <%= render(
+              partial: 'partials/form_components/radio_card',
+              locals: {
+                form: plan_form,
+                plan:,
+                name: 'plan',
+                value: plan.name,
+                icon: {
+                  url: "https://i.ibb.co#{plan.icon_url}",
+                  size: '40x40',
+                  alt: "option card for #{plan.name}"
+                },
+                checked: false
+              }
+            ) %>
+        <% end %>
+      </div>
+
+      <%= plan_form.fields_for @account_plan.payment_recurrence do |payment_recurrence_form| %>
+        <%= render(
+          partial: 'partials/form_components/toggle_button',
+          locals: {
+            id_prefix: 'account_plan_payment_recurrence_name',
+            form: payment_recurrence_form,
+            name: 'name',
+            checked: @account_plan.payment_recurrence.acronym == 'yo',
+            dispossed_values: {
+              left: 'monthly',
+              right: 'yearly'
+            },
+            data: { action: "click->plan#changePlanFrequence" }
+          }
+        ) %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= content_tag(
+    :div,
+    form.submit('Next Step', { class: 'btn-goahead'}),
+    class: 'min-w-full flex justify-end'
+  ) %>
+<% end %>

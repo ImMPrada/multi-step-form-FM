@@ -15,6 +15,16 @@ class OnboardingsController < ApplicationController
 
   def select_plan
     change_current_step(2)
+    @account = onboarding.account
+    payment_recurrence = PaymentRecurrence.includes(:plans)
+    @account_plan = @account.plan || @account.build_plan(payment_recurrence: payment_recurrence.last)
+
+    @monthly_plans = payment_recurrence.find_by(acronym: 'mo').plans.where(status: 'available')
+    @yearly_plans = payment_recurrence.find_by(acronym: 'yo').plans.where(status: 'available')
+  end
+
+  def add_plan
+    byebug
   end
 
   private
