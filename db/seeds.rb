@@ -5,3 +5,76 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Plan.destroy_all
+PaymentRecurrence.destroy_all
+
+payment_recurrence = PaymentRecurrence.create(
+  name: 'monthly',
+  days_delta: 0,
+  months_delta: 1,
+  years_delta: 0,
+  acronym: 'mo'
+)
+
+Plan.create(
+  icon_path: '/1rXqk06/arcade-plan-icon.png',
+  name: 'Arcade',
+  price: 9.00,
+  note: nil,
+  status: 'active',
+  payment_recurrence:
+)
+
+Plan.create(
+  icon_path: '/MspwF5X/advanced-plan-icon.png',
+  name: 'Advanced',
+  price: 12.00,
+  note: nil,
+  status: 'active',
+  payment_recurrence:
+)
+
+Plan.create(
+  icon_path: '/nDGT4xW/pro-plan-icon.png',
+  name: 'Pro',
+  price: 15.00,
+  note: nil,
+  status: 'active',
+  payment_recurrence:
+)
+
+payment_recurrence = PaymentRecurrence.create(
+  name: 'yearly',
+  days_delta: 0,
+  months_delta: 0,
+  years_delta: 1,
+  acronym: 'yr'
+)
+
+Plan.create(
+  icon_path: '/1rXqk06/arcade-plan-icon.png',
+  name: 'Arcade',
+  price: 90.00,
+  note: '2 months free',
+  status: 'active',
+  payment_recurrence:
+)
+
+Plan.create(
+  icon_path: '/MspwF5X/advanced-plan-icon.png',
+  name: 'Advanced',
+  price: 120.00,
+  note: '2 months free',
+  status: 'active',
+  payment_recurrence:
+)
+
+Plan.create(
+  icon_path: '/nDGT4xW/pro-plan-icon.png',
+  name: 'Pro',
+  price: 150.00,
+  note: '2 months free',
+  status: 'active',
+  payment_recurrence:
+)

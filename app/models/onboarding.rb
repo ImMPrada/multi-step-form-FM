@@ -5,4 +5,8 @@ class Onboarding < ApplicationRecord
 
   belongs_to :owner, class_name: 'User'
   belongs_to :account
+
+  def pending?
+    status == 'in_progress'
+  end
 end
