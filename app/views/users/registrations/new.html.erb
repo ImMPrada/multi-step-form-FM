@@ -21,8 +21,20 @@
           form:,
           label_text: 'Name:',
           key: :name,
-          form_helper: form.text_field(:name, { placeholder: Faker::Name.name }),
-          error_message: 'here is for error message'
+          form_helper: form.text_field(
+            :name,
+            {
+              placeholder: Faker::Name.name,
+              class: "
+                form-input
+                w-full
+                focus:outline-none
+                focus:shadow-outline
+                #{resource.errors.messages[:name].empty? ? 'border-purple' : 'border-red-600'}
+              "
+            }
+          ),
+          error_message: resource.errors.messages[:name].first
         }
       )
     %>
@@ -34,8 +46,20 @@
           form:,
           label_text: 'Email Address:',
           key: :email,
-          form_helper: form.email_field(:email, { placeholder: Faker::Internet.email }),
-          error_message: 'here is for error message'
+          form_helper: form.email_field(
+            :email,
+            {
+              placeholder: Faker::Internet.email,
+              class: "
+                form-input
+                w-full
+                focus:outline-none
+                focus:shadow-outline
+                #{resource.errors.messages[:email].empty? ? 'border-purple' : 'border-red-600'}
+              "
+            }
+          ),
+          error_message: resource.errors.messages[:email].first
         }
       )
     %>
@@ -47,8 +71,20 @@
           form:,
           label_text: 'Phone Number:',
           key: :phone_number,
-          form_helper: form.telephone_field(:phone_number, { placeholder: '3002341234' }),
-          error_message: 'here is for error message'
+          form_helper: form.telephone_field(
+            :phone_number,
+            {
+              placeholder: '3005555555',
+              class: "
+                form-input
+                w-full
+                focus:outline-none
+                focus:shadow-outline
+                #{resource.errors.messages[:phone_number].empty? ? 'border-purple' : 'border-red-600'}
+              "
+            }
+          ),
+          error_message: resource.errors.messages[:phone_number].first
         }
       )
     %>
@@ -61,8 +97,19 @@
             form:,
             label_text: 'Password:',
             key: :password,
-            form_helper: form.password_field(:password, { placeholder: '******' }),
-            error_message: 'here is for error message'
+            form_helper: form.password_field(
+            :password,
+            {
+              placeholder: '******',
+              class: "
+                form-input
+                focus:outline-none
+                focus:shadow-outline
+                #{resource.errors.messages[:password].empty? && resource.errors.messages[:password_confirmation].empty? ? 'border-purple' : 'border-red-600'}
+              "
+            }
+          ),
+            error_message: resource.errors.messages[:password].first || resource.errors.messages[:password_confirmation].first
           }
         )
       %>
@@ -74,8 +121,19 @@
             form:,
             label_text: 'Confirm Password:',
             key: :password_confirmation,
-            form_helper: form.password_field(:password_confirmation, { placeholder: '******' }),
-            error_message: 'here is for error message'
+            form_helper: form.password_field(
+            :password_confirmation,
+            {
+              placeholder: '******',
+              class: "
+                form-input
+                focus:outline-none
+                focus:shadow-outline
+                #{resource.errors.messages[:password].empty? && resource.errors.messages[:password_confirmation].empty? ? 'border-purple' : 'border-red-600'}
+              "
+            }
+          ),
+            error_message: resource.errors.messages[:password].first || resource.errors.messages[:password_confirmation].first
           }
         )
       %>

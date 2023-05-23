@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'onboardings#index'
 
-  resources :onboardings, only: %i[index show] do
+  resources :onboardings, only: %i[index show create] do
     get :continue, on: :member
     get :select_plan, on: :member
     patch :add_plan, on: :member

@@ -1,0 +1,11 @@
+<div class="flex justify-between border border-purple px-4 py-6 rounded-md">
+  <div class="flex flex-col">
+    <span class="text-base">account: <%= onboarding.account.name %></span>
+    <span class="text-sm">onboarding status: <%= onboarding.status.gsub('_', ' ') %></span>
+  </div>
+  <div>
+    <% if onboarding.pending? %>
+      <%= link_to('continue onboarding', continue_onboarding_path(onboarding), class: 'blue-link text-sm p-0') %>
+    <% end %>
+  </div>
+</div>

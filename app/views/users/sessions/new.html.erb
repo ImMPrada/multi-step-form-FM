@@ -21,8 +21,20 @@
           form:,
           label_text: 'Email Address:',
           key: :email,
-          form_helper: form.email_field(:email, { placeholder: Faker::Internet.email }),
-          error_message: 'here is for error message'
+          form_helper: form.email_field(
+            :email,
+            {
+              placeholder: Faker::Internet.email,
+              class: "
+                form-input
+                w-full
+                focus:outline-none
+                focus:shadow-outline
+                #{alert.nil? ? 'border-purple' : 'border-red-600'}
+              "
+            }
+          ),
+          error_message: ''
         }
       )
     %>
@@ -34,8 +46,19 @@
           form:,
           label_text: 'Password:',
           key: :password,
-          form_helper: form.password_field(:password, { placeholder: '******' }),
-          error_message: 'here is for error message'
+          form_helper: form.password_field(
+            :password,
+            {
+              placeholder: '******',
+              class: "
+                form-input
+                focus:outline-none
+                focus:shadow-outline
+                #{alert.nil? ? 'border-purple' : 'border-red-600'}
+              "
+            }
+          ),
+          error_message: ''
         }
       )
     %>
