@@ -7,7 +7,7 @@
   class: "min-w-full min-h-full flex flex-col gap-3 justify-between"
 ) do |form|%>
   <div>
-    <div class='min-h-full flex flex-col gap-3'>
+    <div class= 'flex flex-col gap-3'>
       <h3 class='text-3xl font-bold mb-3'>
         Select a plan
       </h3>
@@ -17,7 +17,7 @@
     </div>
 
     <%= form.fields_for(@account_plan) do |plan_form| %>
-      <div data-controller="plan">
+      <div data-controller="plan" class="flex flex-col gap-10">
         <div
           id='yearly_plans_options'
           class = <%= "
@@ -28,11 +28,11 @@
         >
           <% @yearly_plans.each do |plan| %>
               <%= render(
-                partial: 'partials/form_components/radio_card',
+                partial: 'partials/form_components/plan_card',
                 locals: {
                   form: plan_form,
                   plan:,
-                  name: 'plan',
+                  name: 'name',
                   value: plan.name,
                   icon: {
                     url: "https://i.ibb.co#{plan.icon_url}",
@@ -49,18 +49,18 @@
         <div
           id='monthly_plans_options'
           class = <%= "
-            #{@account_plan.payment_recurrence.acronym == 'mo' ? 'flexs' : 'hidden'}
+            #{@account_plan.payment_recurrence.acronym == 'mo' ? 'flex' : 'hidden'}
             w-full
             justify-around
           " %>
         >
           <% @monthly_plans.each do |plan| %>
               <%= render(
-                partial: 'partials/form_components/radio_card',
+                partial: 'partials/form_components/plan_card',
                 locals: {
                   form: plan_form,
                   plan:,
-                  name: 'plan',
+                  name: 'name',
                   value: plan.name,
                   icon: {
                     url: "https://i.ibb.co#{plan.icon_url}",
