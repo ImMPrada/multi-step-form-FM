@@ -7,14 +7,12 @@ export default class extends Controller {
   }
 
   changePlanFrequence(event) {
-    console.log("Hello, Stimulus! from toggle, click", this.element)
-
     const isYearlyPlan = event.target.checked
     const monthlyToggleLabel = (document.getElementById(`${event.target.id}_monthly`))
     const yearlyToggleLabel = (document.getElementById(`${event.target.id}_yearly`))
     const yearlyCards = (document.getElementById("yearly_plans_options"))
     const monthlyCards = (document.getElementById("monthly_plans_options"))
-    const cards = (document.getElementsByName("plan[plan]"))
+    const cards = (document.getElementsByName("account[plan][name]"))
 
     cards.forEach((card) => {
       card.checked = false
