@@ -1,14 +1,20 @@
-<div class="flex flex-col align-between justify-between min-h-full">
-  <div class="flex flex-col">
-    onboading#index
+<div class="flex flex-col align-between justify-between h-full">
+  <h3 class="mb-4 text-xl font-bold">Onboardings:</h3>
 
+  <div class="flex flex-col gap-2 overflow-y-scroll h-full py-2">
     <% @onboardings.each do |onboarding| %>
-      <span class="block"><%= onboarding.account.name %></span> 
-      <%= link_to "Some Page", continue_onboarding_path(onboarding) %>
+      <%= render partial: 'partials/onboarding_account_card', locals: { onboarding: onboarding } %>
     <% end %>
   </div>
 
-  <div>
-    <%= link_to "Sign-out", destroy_user_session_path, data: { turbo_method: :delete } %>
-  </div>
+  <%=
+    link_to(
+      '+',
+      onboardings_path,
+      data: { turbo_method: :post },
+      class: 'flex border-dashed border-2 border-purple px-4 py-6 rounded-md mt-6'
+    )
+  %>
+
+  <%= link_to "Sign-out", destroy_user_session_path, data: { turbo_method: :delete }, class: 'blue-link' %>
 </div>

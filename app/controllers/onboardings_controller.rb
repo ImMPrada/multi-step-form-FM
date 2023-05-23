@@ -9,6 +9,11 @@ class OnboardingsController < ApplicationController
     @onboardings = current_user.onboardings.includes(:account)
   end
 
+  def create
+    onboarding = OnboardingProcess.add_new_onboarding_to(current_user)
+    select_plan_onboarding_path(onboarding)
+  end
+
   def continue
     redirect_to path_by_step(onboarding.current_step)
   end
