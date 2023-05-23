@@ -9,7 +9,7 @@
   )%>
 
   <label
-    for=<%="account_plan_#{name}_#{value}_#{frequence_acronym}".downcase.to_sym %>
+    for=<%="account_plan_#{name}_#{value}_#{frequence_acronym}".downcase %>
     class="flex
       sm:flex-col flex-row
       sm:justify-between justify-start
@@ -23,20 +23,20 @@
       cursor-pointer
       hover:border-purple"
   >
-      <div class="w-10 h-10">
-        <%= image_tag(icon[:url], size: icon[:size], alt: icon[:alt]) %>
-      </div>
+    <div class="w-10 h-10">
+      <%= image_tag(icon[:url], size: icon[:size], alt: icon[:alt]) %>
+    </div>
 
-      <div class="flex flex-col">
-        <span class="text-base font-bold">
-          <%= plan[:name] %>
-        </span>
-        <span class="text-sm mt-2 text-soft-gray">
-          <%= plan[:price] %>
-        </span>
-        <span class=<%= "text-xs mt-1.5 #{'hidden' unless plan[:note]}" %>>
-          <%= plan[:note] %>
-        </span>
-      </div>
+    <div class="flex flex-col">
+      <span class="text-base font-bold">
+        <%= plan[:name].capitalize %>
+      </span>
+      <span class="text-sm mt-2 text-soft-gray">
+        <%= plan[:price] %>
+      </span>
+      <span class=<%= "text-xs mt-1.5 #{'hidden' unless plan[:note]}" %>>
+        <%= plan[:note] %>
+      </span>
+    </div>
   </label>
 </div>

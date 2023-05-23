@@ -1,6 +1,6 @@
 <%= form_with(
   model: @account,
-  url: add_plan_onboarding_path([@onboarding, @plan]),
+  url: add_plan_account_path([@account, @plan]),
   data: {
     turbo: false,
   },
@@ -95,6 +95,6 @@
   </div>
 
   <div class='min-w-full flex justify-end'>
-    <%= form.submit('Next Step', { class: 'btn-goahead'}) %>
+    <%= form.submit('Next Step', { class: 'btn-next'}) %>
   </div>
 <% end %>

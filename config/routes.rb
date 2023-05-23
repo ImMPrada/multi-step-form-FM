@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   resources :onboardings, only: %i[index show create] do
     get :continue, on: :member
     get :select_plan, on: :member
-    patch :add_plan, on: :member
     get :select_addons, on: :member
+  end
+
+  resources :accounts, only: %i[show] do
+    patch :add_plan, on: :member
   end
 end

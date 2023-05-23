@@ -10,7 +10,7 @@ PaymentRecurrence.destroy_all
 Plan.destroy_all
 
 monthly = PaymentRecurrence.create!(
-  name: 'Monthly',
+  name: 'monthly',
   acronym: 'mo',
   days_delta: 0,
   months_delta: 1,
@@ -18,7 +18,7 @@ monthly = PaymentRecurrence.create!(
 )
 
 yearly = PaymentRecurrence.create!(
-  name: 'Yearly',
+  name: 'yearly',
   acronym: 'yo',
   days_delta: 0,
   months_delta: 0,
@@ -26,7 +26,7 @@ yearly = PaymentRecurrence.create!(
 )
 
 Plan.create(
-  name: 'Arcade',
+  name: 'arcade',
   price: 9.00,
   status: 'available',
   note: nil,
@@ -35,7 +35,7 @@ Plan.create(
 )
 
 Plan.create(
-  name: 'Arcade',
+  name: 'arcade',
   price: 90.00,
   note: '2 months free',
   status: 'available',
@@ -44,7 +44,7 @@ Plan.create(
 )
 
 Plan.create(
-  name: 'Advanced',
+  name: 'advanced',
   price: 12.00,
   status: 'available',
   note: nil,
@@ -53,7 +53,7 @@ Plan.create(
 )
 
 Plan.create(
-  name: 'Advanced',
+  name: 'advanced',
   price: 120.00,
   note: '2 months free',
   status: 'available',
@@ -62,7 +62,7 @@ Plan.create(
 )
 
 Plan.create(
-  name: 'Pro',
+  name: 'pro',
   price: 15.00,
   status: 'available',
   note: nil,
@@ -71,7 +71,7 @@ Plan.create(
 )
 
 Plan.create(
-  name: 'Pro',
+  name: 'pro',
   price: 150.00,
   note: '2 months free',
   status: 'available',
