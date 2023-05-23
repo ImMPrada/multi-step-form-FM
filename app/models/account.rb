@@ -8,4 +8,6 @@ class Account < ApplicationRecord
   has_many :account_addons, dependent: :destroy
   has_many :addons, through: :account_addons
   has_many :suscriptions, dependent: :destroy
+
+  accepts_nested_attributes_for :plan
 end

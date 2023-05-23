@@ -7,4 +7,6 @@ class Plan < ApplicationRecord
   belongs_to :payment_recurrence
 
   has_many :accounts
+
+  accepts_nested_attributes_for :payment_recurrence
 end
