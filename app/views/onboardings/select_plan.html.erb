@@ -94,9 +94,7 @@
     <% end %>
   </div>
 
-  <%= content_tag(
-    :div,
-    form.submit('Next Step', { class: 'btn-goahead'}),
-    class: 'min-w-full flex justify-end'
-  ) %>
+  <div class='min-w-full flex justify-end'>
+    <%= form.submit('Next Step', { class: 'btn-goahead'}) %>
+  </div>
 <% end %>
