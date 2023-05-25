@@ -37,7 +37,7 @@ class AccountsController < ApplicationController
     return account.plan unless permitted_params[:plan][:name]
 
     plan_name = permitted_params[:plan][:name].split('_')[0]
-    @selected_plan ||= Plan.where(name: plan_name).find_by(payment_recurrence: selected_payment_recurrence)
+    @selected_plan ||= Plan.find_by(payment_recurrence: selected_payment_recurrence, name: plan_name)
   end
 
   def update_account_and_redirect(path_if_success, path_if_fail, next_step_number)
