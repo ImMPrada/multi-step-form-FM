@@ -34,8 +34,6 @@ class AccountsController < ApplicationController
   end
 
   def selected_plan
-    return account.plan unless permitted_params[:plan][:name]
-
     plan_name = permitted_params[:plan][:name].split('_')[0]
     @selected_plan ||= Plan.find_by(payment_recurrence: selected_payment_recurrence, name: plan_name)
   end
