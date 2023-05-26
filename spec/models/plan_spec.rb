@@ -7,11 +7,15 @@ RSpec.describe Plan, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:price) }
     it { is_expected.to validate_presence_of(:status) }
-    it { is_expected.to validate_presence_of(:icon_path) }
+    it { is_expected.to validate_presence_of(:icon_url) }
   end
 
   describe 'associations' do
     it { is_expected.to have_many(:accounts) }
     it { is_expected.to belong_to(:payment_recurrence) }
+  end
+
+  describe 'nested attributes' do
+    it { is_expected.to accept_nested_attributes_for(:payment_recurrence) }
   end
 end

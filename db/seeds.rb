@@ -6,75 +6,75 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Plan.destroy_all
 PaymentRecurrence.destroy_all
+Plan.destroy_all
 
-payment_recurrence = PaymentRecurrence.create(
+monthly = PaymentRecurrence.create!(
   name: 'monthly',
+  acronym: 'mo',
   days_delta: 0,
   months_delta: 1,
-  years_delta: 0,
-  acronym: 'mo'
+  years_delta: 0
 )
 
-Plan.create(
-  icon_path: '/1rXqk06/arcade-plan-icon.png',
-  name: 'Arcade',
-  price: 9.00,
-  note: nil,
-  status: 'active',
-  payment_recurrence:
-)
-
-Plan.create(
-  icon_path: '/MspwF5X/advanced-plan-icon.png',
-  name: 'Advanced',
-  price: 12.00,
-  note: nil,
-  status: 'active',
-  payment_recurrence:
-)
-
-Plan.create(
-  icon_path: '/nDGT4xW/pro-plan-icon.png',
-  name: 'Pro',
-  price: 15.00,
-  note: nil,
-  status: 'active',
-  payment_recurrence:
-)
-
-payment_recurrence = PaymentRecurrence.create(
+yearly = PaymentRecurrence.create!(
   name: 'yearly',
+  acronym: 'yo',
   days_delta: 0,
   months_delta: 0,
-  years_delta: 1,
-  acronym: 'yr'
+  years_delta: 1
 )
 
 Plan.create(
-  icon_path: '/1rXqk06/arcade-plan-icon.png',
-  name: 'Arcade',
+  name: 'arcade',
+  price: 9.00,
+  status: 'available',
+  note: nil,
+  payment_recurrence: monthly,
+  icon_url: '/1rXqk06/arcade-plan-icon.png'
+)
+
+Plan.create(
+  name: 'arcade',
   price: 90.00,
   note: '2 months free',
-  status: 'active',
-  payment_recurrence:
+  status: 'available',
+  payment_recurrence: yearly,
+  icon_url: '/1rXqk06/arcade-plan-icon.png'
 )
 
 Plan.create(
-  icon_path: '/MspwF5X/advanced-plan-icon.png',
-  name: 'Advanced',
+  name: 'advanced',
+  price: 12.00,
+  status: 'available',
+  note: nil,
+  payment_recurrence: monthly,
+  icon_url: '/MspwF5X/advanced-plan-icon.png'
+)
+
+Plan.create(
+  name: 'advanced',
   price: 120.00,
   note: '2 months free',
-  status: 'active',
-  payment_recurrence:
+  status: 'available',
+  payment_recurrence: yearly,
+  icon_url: '/MspwF5X/advanced-plan-icon.png'
 )
 
 Plan.create(
-  icon_path: '/nDGT4xW/pro-plan-icon.png',
-  name: 'Pro',
+  name: 'pro',
+  price: 15.00,
+  status: 'available',
+  note: nil,
+  payment_recurrence: monthly,
+  icon_url: '/nDGT4xW/pro-plan-icon.png'
+)
+
+Plan.create(
+  name: 'pro',
   price: 150.00,
   note: '2 months free',
-  status: 'active',
-  payment_recurrence:
+  status: 'available',
+  payment_recurrence: yearly,
+  icon_url: '/nDGT4xW/pro-plan-icon.png'
 )
