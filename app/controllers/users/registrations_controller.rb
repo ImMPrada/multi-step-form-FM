@@ -60,7 +60,7 @@ module Users
     # The path used after sign up.
     def after_sign_up_path_for(resource)
       onboarding = OnboardingProcess.add_new_onboarding_to(resource)
-      select_plan_onboarding_path(onboarding)
+      onboarding_plans_path(onboarding)
     end
 
     # The path used after sign up for inactive accounts.

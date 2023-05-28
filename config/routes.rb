@@ -9,12 +9,7 @@ Rails.application.routes.draw do
   root 'onboardings#index'
 
   resources :onboardings, only: %i[index show create] do
-    get :continue, on: :member
-    get :select_plan, on: :member
-    get :select_addons, on: :member
-  end
-
-  resources :accounts, only: %i[show] do
-    patch :add_plan, on: :member
+    resources :plans, only: %i[index create]
+    resources :addons, only: %i[index create]
   end
 end

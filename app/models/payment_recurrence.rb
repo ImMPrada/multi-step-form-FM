@@ -7,4 +7,7 @@ class PaymentRecurrence < ApplicationRecord
 
   has_many :addons
   has_many :plans
+
+  scope :with_monthly_plans, -> { includes(:plans).find_by(acronym: 'mo').plans.where(status: 'available') }
+  scope :with_yearly_plans, -> { includes(:plans).find_by(acronym: 'yo').plans.where(status: 'available') }
 end

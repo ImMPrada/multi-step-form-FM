@@ -33,14 +33,16 @@ module Steps
       ]
     end
 
-    def path_by_step(step)
+    def path_by_step(onboarding)
+      step = onboarding.current_step
+
       case step
       when 1
         # ...
       when 2
-        select_plan_onboarding_path(onboarding)
+        onboarding_plans_path(onboarding)
       when 3
-        # ...
+        onboarding_addons_path(onboarding)
       when 4
         # ...
       else
