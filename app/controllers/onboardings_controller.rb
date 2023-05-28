@@ -11,7 +11,7 @@ class OnboardingsController < ApplicationController
 
   def create
     @onboarding = OnboardingProcess.add_new_onboarding_to(current_user)
-    select_plan_onboarding_path(@onboarding)
+    onboarding_plans_path(@onboarding)
   end
 
   def show

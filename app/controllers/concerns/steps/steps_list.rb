@@ -42,7 +42,7 @@ module Steps
       when 2
         onboarding_plans_path(onboarding)
       when 3
-        # ...
+        onboarding_addons_path(onboarding)
       when 4
         # ...
       else

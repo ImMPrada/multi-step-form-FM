@@ -7,8 +7,8 @@ class PlansController < ApplicationController
   def create
     if selected_plan
       update_account_and_redirect(
-        select_addons_onboarding_path(onboarding),
-        select_plan_onboarding_path(onboarding),
+        onboarding_addons_path(onboarding),
+        onboarding_plans_path(onboarding),
         3
       )
     else
