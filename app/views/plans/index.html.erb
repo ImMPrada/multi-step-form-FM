@@ -1,9 +1,10 @@
 <%= form_with(
   model: @account,
-  url: add_plan_account_path([@account, @plan]),
+  url: onboarding_plans_path([@onboarding, @plan]),
   data: {
     turbo: false,
   },
+  method: :post,
   class: "min-w-full min-h-full flex flex-col gap-3 justify-between"
 ) do |form|%>
   <div>

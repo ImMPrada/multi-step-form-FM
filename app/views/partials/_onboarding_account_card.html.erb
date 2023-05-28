@@ -5,7 +5,7 @@
   </div>
   <div>
     <% if onboarding.pending? %>
-      <%= link_to('continue onboarding', continue_onboarding_path(onboarding), class: 'blue-link text-sm p-0') %>
+      <%= link_to('continue onboarding', onboarding_path(onboarding), class: 'blue-link text-sm p-0') %>
     <% end %>
   </div>
 </div>
