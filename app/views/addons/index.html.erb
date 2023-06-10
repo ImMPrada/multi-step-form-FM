@@ -1,0 +1,41 @@
+<%= form_with(
+  model: @account,
+  url: onboarding_addons_path([@onboarding, @addons]),
+  data: {
+    turbo: false,
+  },
+  method: :post,
+  class: "min-w-full min-h-full flex flex-col gap-3 justify-between"
+) do |form|%>
+
+  <div>
+    <div class= 'flex flex-col gap-3'>
+      <h3 class='text-3xl font-bold mb-3'>
+        Pick add-ons
+      </h3>
+      <span class='block text-base mb-10'>
+        Add-ons help enhance your gaming experience.
+      </span>
+    </div>
+
+    <% @addons.each do |addon| %>
+      <div class="addon">
+        <%= render(
+          partial: 'partials/form_components/addon_card',
+          locals: {
+            form:,
+            value: addon.id,
+            addon:,
+            name: "addon_#{addon.id}",
+            checked: addon_selected?(@account_addons, addon) ? 'checked' : 'no'
+          }
+        ) %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class='min-w-full flex justify-end'>
+    <%= form.submit('Next Step', { class: 'btn-next'}) %>
+  </div>
+<% end %>
