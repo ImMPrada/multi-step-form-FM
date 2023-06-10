@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-PaymentRecurrence.destroy_all
 Plan.destroy_all
+Addon.destroy_all
+PaymentRecurrence.destroy_all
 
 monthly = PaymentRecurrence.create!(
   name: 'monthly',
@@ -77,4 +78,28 @@ Plan.create(
   status: 'available',
   payment_recurrence: yearly,
   icon_url: '/nDGT4xW/pro-plan-icon.png'
+)
+
+Addon.create(
+  name: 'Online service',
+  price: 1.00,
+  status: 'available',
+  note: 'Access to multiplayer games',
+  payment_recurrence: monthly
+)
+
+Addon.create(
+  name: 'Larger storage',
+  price: 2.00,
+  status: 'available',
+  note: 'Extra 1TB of cloud save',
+  payment_recurrence: monthly
+)
+
+Addon.create(
+  name: 'Customizable pProfile',
+  price: 2.00,
+  status: 'available',
+  note: 'Custom theme on your profile',
+  payment_recurrence: monthly
 )
