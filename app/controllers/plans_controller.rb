@@ -18,14 +18,11 @@ class PlansController < ApplicationController
   end
 
   def index
+    change_current_step(2)
     @account_plan = account.plan || account.build_plan(payment_recurrence: PaymentRecurrence.last)
 
     @monthly_plans = PaymentRecurrence.with_monthly_plans
     @yearly_plans = PaymentRecurrence.with_yearly_plans
-  end
-
-  def select_addons
-    change_current_step(3)
   end
 
   private
