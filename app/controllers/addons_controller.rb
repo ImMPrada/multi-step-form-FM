@@ -14,6 +14,8 @@ class AddonsController < ApplicationController
     addons_params.each do |_checkbox_id, addoin_id|
       add_addon_to_account(addoin_id) unless addoin_id.to_i.zero?
     end
+
+    redirect_to onboarding_summary_index_path(onboarding)
   end
 
   private
