@@ -1,6 +1,7 @@
 class AddonsController < ApplicationController
   layout 'onboarding_application'
   include Steps::StepsList
+  include Assignable
 
   before_action :authenticate_user!
 
@@ -12,10 +13,15 @@ class AddonsController < ApplicationController
   def create
     empty_account_addons
     addons_params.each do |_checkbox_id, addoin_id|
-      add_addon_to_account(addoin_id) unless addoin_id.to_i.zero?
+      account.addons << addon(addoin_id) unless addoin_id.to_i.zero?
     end
 
-    redirect_to onboarding_summary_index_path(onboarding)
+    update_account_and_redirect(
+      onboarding_summary_index_path(onboarding),
+      onboarding_addons_path(onboarding),
+      3,
+      account
+    )
   end
 
   private
@@ -28,11 +34,6 @@ class AddonsController < ApplicationController
     params.require(:account).permit(addons_ids)
   end
 
-  def add_addon_to_account(addoin_id)
-    account_addon = AccountAddon.new(account:, addon_id: addoin_id)
-    account_addon.save
-  end
-
   def empty_account_addons
     account_addons = AccountAddon.where(account:)
     account_addons.destroy_all unless account_addons.empty?
@@ -40,6 +41,10 @@ class AddonsController < ApplicationController
 
   def addons
     @addons ||= Addon.all
+  end
+
+  def addon(addon_id)
+    Addon.find(addon_id)
   end
 
   def account
