@@ -6,6 +6,7 @@ class AddonsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    change_current_step(3)
     @addons = Addon.all
     @account_addons = account.addons
   end
