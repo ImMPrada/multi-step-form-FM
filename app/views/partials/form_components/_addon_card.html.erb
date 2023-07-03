@@ -1,0 +1,42 @@
+<div>
+  <%= form.check_box(
+    "#{name.downcase}".to_sym,
+    {
+      class: 'peer relative top-12 left-5 center checked:bg-purple checked:border-transparent z-10',
+      checked:
+    },
+    value,
+    0,
+  ) %>
+  <label for=<%="account_#{name}"%>
+  class='
+      block relative
+      z-0 flex
+      justify-between
+      w-full
+      px-10 py-5
+      rounded-lg
+      cursor-pointer
+      border
+      border-soft-gray
+      hover:border-purple
+      peer-checked:bg-dark-white
+      peer-checked:border-purple
+  '>
+    <div class="flex flex-col justify-center mx-2">
+      <div class="flex flex-col justify-center gap-1">
+        <span class="text-xl font-bold">
+          <%= addon[:name] %>
+        </span>
+        <span class="text-base text-soft-gray">
+          <%= addon[:note] %>
+        </span>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center">
+      <span class="text-base text-purple">
+        <%= "+$#{addon[:price]}/mo" %>
+      </span>
+    </div>
+  </label>
+</div>

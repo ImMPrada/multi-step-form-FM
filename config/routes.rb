@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :onboardings, only: %i[index show create] do
     resources :plans, only: %i[index create]
     resources :addons, only: %i[index create]
+    resources :summary, only: %i[index]
   end
 end
